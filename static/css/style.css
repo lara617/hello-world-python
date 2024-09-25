@@ -1,3 +1,15 @@
+  
+  body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin-left: 100px;
+    margin-right: 40px;
+}
+
+  h3 {
+    font-weight: normal;
+}
+
+
 .footer {
     background-color: #333; /* Cor de fundo do retângulo */
     color: rgb(255, 255, 255);           /* Cor do texto */
@@ -41,12 +53,4 @@
     transform: scale(1.1); /* Ajuste o valor conforme necessário para o efeito desejado */
   }
 
-  body {
-    font-family:Georgia, 'Times New Roman', Times, serif;
-    margin-left: 100px;
-    margin-right: 40px;
-}
 
-  h3 {
-    font-weight: normal;
-}
