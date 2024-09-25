@@ -1,107 +1,172 @@
+/* Definindo fontes globais e estilização básica */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff;
+}
+
+/* Estilizando o cabeçalho */
+header {
+    background-color :#4CAF50 ;
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ffffff;
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 1px;
 }
 
-#menu {
-    text-align: center;
-    margin-bottom: 20px;
+/* Estilizando títulos */
+h2 {
+    color: #4CAF50;
+    font-size: 2em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 30px;
 }
 
-#menu button {
-    padding: 10px 20px;
-    margin: 5px;
-    background-color: #00796b;
+h3 {
+    color:  #4CAF50 ;
+    margin-top: 20px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+p, li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+/* Estilizando listas */
+li {
+    margin-left: 20px;
+}
+
+/* Estilizando links */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilizando as tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-#menu button:hover {
-    background-color: #004d40;
+td {
+    background-color: #fff;
 }
 
+/* Flexbox para tabelas lado a lado */
+div[style="display: flex;"] {
+    justify-content: space-between;
+}
 
-    .formulario {
-    display: none;
-    max-width: 600px;
-    margin: 0 auto 20px;
-    background-color: #ffffff;
+/* Imagem */
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.imagem-principal {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+/* Estilizando a conclusão */
+.conclusao {
+    margin-top: 40px;
+    background-color: #4c8baf;
+    color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #333;
+.conclusao p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #fff;
 }
 
-input, button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button[type="submit"] {
-    background-color: #00796b;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button[type="submit"]:hover {
-    background-color: #004d40;
-}
-
-.resultado {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-.resultado.success {
-    background-color: #d4edda;
-    color: #00796b;
-    border: 1px solid #c3e6cb;
-}
-
-.resultado.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
-header, footer {
+/* Estilização para centros */
+center {
     text-align: center;
-    padding: 10px;
-    background-color: #00796b;
-    margin-bottom: 20px;
 }
 
-nav{
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 20px;
+/* Pequenos ajustes de responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    div[style="display: flex;"] {
+        flex-direction: column;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+
+.meu-botao {
+    background-color: #4CAF50; /* Cor de fundo */
+    color: white;              /* Cor do texto */
+    padding: 10px 20px;        /* Espaçamento interno */
+    border: none;              /* Sem borda */
+    border-radius: 5px;        /* Bordas arredondadas */
+    cursor: pointer;           /* Cursor de mão ao passar o mouse */
+    font-size: 16px;           /* Tamanho do texto */
+    text-align: center;        /* Alinhamento do texto */
+}
+
+.meu-botao:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+}
+
+.imagem-principal {
+    width: 300px;           /* Largura da imagem */
+    height: 300px;          /* Altura da imagem igual à largura para formato circular */
+    border-radius: 50%;     /* Faz a imagem ficar circular */
+    object-fit: cover;      /* Garante que a imagem preencha o espaço e mantenha a proporção */
+    border: 5px solid #333; /* Adiciona uma borda opcional */
 }
