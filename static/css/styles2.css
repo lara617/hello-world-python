@@ -1,0 +1,172 @@
+/* Definindo fontes globais e estilização básica */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilizando o cabeçalho */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 1px;
+}
+
+/* Estilizando títulos */
+h2 {
+    color: #4CAF50;
+    font-size: 2em;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-top: 30px;
+}
+
+h3 {
+    color:  #4CAF50 ;
+    margin-top: 20px;
+    font-size: 1.5em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+p, li {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+/* Estilizando listas */
+li {
+    margin-left: 20px;
+}
+
+/* Estilizando links */
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estilizando as tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* Flexbox para tabelas lado a lado */
+div[style="display: flex;"] {
+    justify-content: space-between;
+}
+
+/* Imagem */
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.imagem-principal {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+}
+
+/* Estilizando a conclusão */
+.conclusao {
+    margin-top: 40px;
+    background-color: #4c8baf;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.conclusao p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Estilização para centros */
+center {
+    text-align: center;
+}
+
+/* Pequenos ajustes de responsividade */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+    
+    div[style="display: flex;"] {
+        flex-direction: column;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+
+.meu-botao {
+    background-color: #4CAF50; /* Cor de fundo */
+    color: white;              /* Cor do texto */
+    padding: 10px 20px;        /* Espaçamento interno */
+    border: none;              /* Sem borda */
+    border-radius: 5px;        /* Bordas arredondadas */
+    cursor: pointer;           /* Cursor de mão ao passar o mouse */
+    font-size: 16px;           /* Tamanho do texto */
+    text-align: center;        /* Alinhamento do texto */
+}
+
+.meu-botao:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+}
+
+.imagem-principal {
+    width: 300px;           /* Largura da imagem */
+    height: 300px;          /* Altura da imagem igual à largura para formato circular */
+    border-radius: 50%;     /* Faz a imagem ficar circular */
+    object-fit: cover;      /* Garante que a imagem preencha o espaço e mantenha a proporção */
+    border: 5px solid #333; /* Adiciona uma borda opcional */
+} 
