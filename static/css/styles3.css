@@ -32,16 +32,21 @@ p {
 
 .imagem-container {
     position: relative;
-    overflow: hidden;
-  }
-  
-  .imagem-container img {
-    width: 45%;
-    height: auto;
+    width: 300px;           /* Largura do contêiner */
+    height: 300px;          /* Altura do contêiner igual à largura para formato circular */
+    border-radius: 50%;     /* Faz a imagem ficar circular */
+    overflow: hidden;       /* Garante que nada saia do contêiner */
+    border: 5px solid #333; /* Adiciona uma borda opcional */
+}
+
+.imagem-container img {
+    width: 85%;             /* Faz a imagem preencher 80% do contêiner */
+    height: auto;           /* Mantém a proporção da imagem */
+    object-fit: cover;      /* Garante que a imagem preencha o espaço */
     transition: transform 0.3s ease-in-out;
-  }
-  
-  .imagem-container:hover img {
-    transform: scale(1.1); /* Ajuste o valor conforme necessário para o efeito desejado */
-  }
+    position: absolute;     /* Permite ajustar a posição da imagem */
+    top: 50%;               /* Centraliza verticalmente */
+    left: 50%;              /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Move a imagem para cima e para a esquerda para centralizar */
+}
 
