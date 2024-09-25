@@ -1,20 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import firebase_admin
-from firebase_admin import firestore
-
-from teste_firebase import init_firebase
 
 app = Flask(__name__)
 CORS(app)
 
 carrinho = []
-
-if not firebase_admin._apps: 
-    init_firebase()
-
-# Conecta ao Firestore
-db = firestore.client()
 
 @app.route('/')
 def index():
