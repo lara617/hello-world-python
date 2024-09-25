@@ -1,0 +1,52 @@
+.footer {
+    background-color: #333; /* Cor de fundo do retângulo */
+    color: rgb(255, 255, 255);           /* Cor do texto */
+    text-align: center;     /* Centraliza o texto */
+    padding: 15px 0;        /* Espaçamento interno (topo e fundo) */
+    position: fixed;        /* Fixa a barra no fundo */
+    width: 100%;            /* Faz com que o div ocupe toda a largura */
+    bottom: 0;              /* Fixa no final da página */
+    font-size: 20px;        /* Tamanho do texto */
+}
+
+
+
+.meu-botao1 {
+    background-color: #4CAF50; /* Cor de fundo */
+    color: white;              /* Cor do texto */
+    padding: 10px 20px;        /* Espaçamento interno */
+    border: none;              /* Sem borda */
+    border-radius: 5px;        /* Bordas arredondadas */
+    cursor: pointer;           /* Cursor de mão ao passar o mouse */
+    font-size: 16px;           /* Tamanho do texto */
+    text-align: center;        /* Alinhamento do texto */
+}
+
+.meu-botao1:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+}
+
+.imagem-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .imagem-container img {
+    width: 45%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .imagem-container:hover img {
+    transform: scale(1.1); /* Ajuste o valor conforme necessário para o efeito desejado */
+  }
+
+  body {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    margin-left: 100px;
+    margin-right: 40px;
+}
+
+  h3 {
+    font-weight: normal;
+}
