@@ -18,7 +18,7 @@ body {
 /* Estilizando o cabeçalho */
 header {
     background-color: #68ddbd;
-    color: white;
+    color: black;
     padding: 20px 0;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
