@@ -22,6 +22,7 @@ li{
     width: 100%;            /* Faz com que o div ocupe toda a largura */
     bottom: 0;              /* Fixa no final da página */
     font-size: 20px;        /* Tamanho do texto */
+    margin-left: 0%;
 }
 
 
@@ -71,5 +72,3 @@ li{
   .imagem-container:hover img {
     transform: scale(1.1); /* Ajuste o valor conforme necessário para o efeito desejado */
   }
-
-

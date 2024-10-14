@@ -7,7 +7,7 @@ carrinho = []
 
 @app.route('/')
 def index():
-    return render_template('index2.html')
+    return render_template('index2.html')  # Ou 'index.html' se você quiser usar esse
 
 @app.route('/<form_id>', methods=['GET'])
 def mostrar_formulario(form_id):
