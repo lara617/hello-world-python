@@ -12,7 +12,8 @@
     
 
     <title>por defenit</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 <body>
 
@@ -36,10 +37,13 @@
 
 
 <div style="display: flex; align-items: flex-start;">
-    <img src="/FLASK/static/images/diagram (2).png" width="400" style="margin-right: 100px;"> <!-- Ajuste o valor de margin-right conforme necessário -->
-    <img src="/FLASK/static/images/diagram (1).png" width="1000" style="margin-left: 100px;"> <!-- Ajuste o valor de margin-left conforme necessário -->
-</div>
-
+    
+    
+    <img src="{{ url_for('static', filename='images/diagram (2).png') }}" width="400" style="margin-right: 100px;"> <!-- Ajuste o valor de margin-right conforme necessário -->
+        <img src="{{ url_for('static', filename='images/diagram (1).png') }}" width="1000" style="margin-left: 100px;"> <!-- Ajuste o valor de margin-left conforme necessário -->
+    
+    </di
+    </div>
    
 
 
@@ -47,14 +51,22 @@
         <p><h2>Explicação de:</h2></p>
 
         <ul>
-        
-            <a href="/FLASK/templates/index2.html"><button class="meu-botao1">API/API Gateway</button></a>
-            <a href="/FLASK/templates/index3.html"><button class="meu-botao2">Microsserviços</button></a>
-
+            <li>
+                <a href="{{ url_for('templates.index2') }}">
+                    <button class="meu-botao1">API/API Gateway</button>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url_for('templates.index3') }}">
+                    <button class="meu-botao2">Microsserviços</button>
+                </a>
+            </li>
         </ul>
+        
 
 <div class="imagem-container">
-    <img src="/FLASK/static/images/img.1.png" alt="img">
+    <img src="{{ url_for('static', filename='images/img.1.png') }}" alt="img">
+
      </div>
  <br><br>
      <p><h3>Para este projeto vamos integrar 6 módulos:<p></p>
