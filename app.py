@@ -1,10 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 
 app = Flask(__name__)
-app.secret_key = 'sua_chave_secreta'  # Necessário para usar sessões e mensagens flash
 
-# Simulação de um banco de dados de usuários
-users = {}
 
 # Rota para a página inicial
 @app.route('/')
@@ -31,13 +28,9 @@ def signup():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        # Adiciona o usuário ao "banco de dados"
-        if email not in users:
-            users[email] = password
-            flash('Cadastro realizado com sucesso! Faça login.')
-            return redirect(url_for('login'))
-        else:
-            flash('Email já cadastrado.')
+        # Para este exemplo, não há persistência de dados
+        flash('Cadastro realizado com sucesso! Faça login.')
+        return redirect(url_for('login'))
     return render_template('signup.html')
 
 # Rota para o painel de controle
