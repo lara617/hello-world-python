@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Processamento Computacional</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/stylesx.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    
-index4- topico 1
-index5- top2 
-index6- top3
-index7- top4
+    <div class="container">
+        <h1 class="cloud-text">Processamento Computacional</h1>
 
-
-
-
+        <div class="buttons">
+            <a href="{{ url_for('index4') }}"><button class="modern-button">Organização de um Computador</button></a>
+            <a href="{{ url_for('index5') }}"><button class="modern-button">Componentes do Computador</button></a>
+            <a href="{{ url_for('index6') }}"><button class="modern-button">Unidade de Memória</button></a>
+            <a href="{{ url_for('index7') }}"><button class="modern-button">Processador</button></a>
+        </div>
+    </div>
 </body>
 </html>
