@@ -1,0 +1,101 @@
+/* Aplicando fonte global */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f4f4f9, #3498db, #e74c3c);
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    animation: borderChange 4s infinite alternate;
+}
+
+/* Animação do contorno para um efeito moderno */
+@keyframes borderChange {
+    0% {
+        box-shadow: 0 0 20px 10px rgba(52, 152, 219, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px rgba(231, 76, 60, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 20px 10px rgba(46, 204, 113, 0.5);
+    }
+}
+
+/* Estilo do título */
+h1 {
+    font-size: 3.5rem;
+    color: #34495e;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 30px;
+}
+
+/* Estilo moderno dos botões */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.modern-button {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+}
+
+.modern-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #16a085, #1abc9c);
+}
+
+
+.cloud-text {
+    font-size: 50px;
+    font-weight: bold;
+    color: #101010;
+    text-shadow: 
+        2px 2px 0px #ccc, 
+        4px 4px 0px #bbb,
+        6px 6px 0px #aaa,
+        8px 8px 0px #999,
+        10px 10px 0px #888;
+    letter-spacing: 8px;
+    position: relative;
+    display: inline-block;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Animação para simular o movimento das nuvens */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
