@@ -58,6 +58,21 @@ li{
   background-color: #2c4aad; /* Cor ao passar o mouse */
 }
 
+.redirect-button {
+  font-size: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.redirect-button:hover {
+  background-color: #2980b9;
+}
+
 .imagem-container {
     position: relative;
     overflow: hidden;
