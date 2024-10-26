@@ -61,7 +61,8 @@ li{
 .redirect-button {
   font-size: 20px;
   padding: 10px 20px;
-  background-color: #3498db;
+  border-radius: 5px;
+  background-color: #2e4053;
   color: white;
   border: none;
   cursor: pointer;
@@ -70,7 +71,7 @@ li{
 }
 
 .redirect-button:hover {
-  background-color: #2980b9;
+  background-color: #90caf9;
 }
 
 .imagem-container {
