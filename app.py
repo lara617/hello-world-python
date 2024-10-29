@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -8,14 +8,16 @@ from firebase_admin import credentials, firestore
 # Carrega as variáveis do arquivo .env
 load_dotenv()
 
-# Verifique se a variável de ambiente está carregada corretamente
-print(os.getenv("GOOGLE_APPLICATION_CREDENTIALS"))  # Para depuração
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCr2U/WKd5YdVIH\ndpa3BuGPLkO4Hdnr8HrheQ89cq2HLk7g1aGWxtGTdQnriBk3IkZb5zYJXek/qC+w\n1wDUECuMtwpnMpy6rV4EPPyCq2gWYyQG1k0i1Au5sRUKLJPNQMyKExzvN2eAJ6OW\nAVFOlhLiEUeI3o3WyMBD6bpiuS/dx3yermSiBzqTMhTxvuQqgN4R9KzrNAaCGfNp\nJfu8m1pnhfaYkP8WSEe/qkbdwXRZC/2BntSvsj5PcMYnLnpFZeOH91yMGrmmW6NB\nyXXNRjjTW+wwP9qzR+xi+N8nGFdLaoEV2R+8eV+vEki548WGqciNAKcnWGpHIa1h\nHBQOiWYfAgMBAAECggEADHYCCC1aCOpc69tJW3UyxuSbwXkx/kieSG+JpN2GFV7M\nwRiMko0me5L0M1ws4+a8Lll/fWy4sfElSs/pqKGRiYRo9d8MJqx/5ukbMEhzOuhZ\nH5Z2L8KAz9K2Nq97z4Qq22TpEgmKRkHZkVIqzfrWMgapvBQojydYawmYMSTCLUp1\nhqq15qxRkKgLMDjs680KrIMdA6XbcZdP5DUBWaL452HyX3nFbjDiNV0mOehNKAhS\ncd+qxxi97nPuRbymQ/t9xh3PVuo/9XmFukXhucXOBjK6NEPBMdT9IfokJWl8XUm8\n5TtZbcN6WnNOXvKLTncmDhK49yU7CTRiONJxOAPCHQKBgQDcDObmwltQf1QFB0EH\nmQdWGzXgDuzhV82LNQ7ST/EIEEEIQ1AMLkAQBx4cCy+L20q3mKLSY1r3cy2M1LQ1\npZ/Wn5vdh5CB/A1/72JDCk2mUNefx+nudYK6r51FEZt/+wAZSbNtXTYKJW/jjJa5\nFXhuLn/iLmnXA6kPVCBSWoeBFQKBgQDH7H4rtcRE0HO4yyj2pa2UfFrTI+VwDng/\n06aGc1rTNxJp+B9Ud5/ChaFC9ljkY1nMd5vOgXuXvrRLUuB6Q0F4mzOrp65O6oT8\nH9lbtB5/tYAVencVBC6jTj8pKQR4o/jD8/ZKlc14CU6Zz/m5hsd4WE1NqoNq764x\n+eCqr1lPYwKBgQDWqityv/WOwLf5M8tnmwyCHodfLZA+gIY+oCL2XhAXuquGYQws\n5c2PFTJ1TyAyAlqQYnGsZkpujUjJUxL+JrWYDRpjcQUzGO0eeivUlK+NaN4AvGhk\nPPSsI/d7UqLspbLB+Jj2PnEiUsUlKZg7tEtIyUnuHzMXEzYQgxQI4tG/xQKBgFfm\nzGbNiZk0Cd1zPfSMTfCeaJSzELsfMZHmri4pZALAERGUrbnGyvCNLqUxiU4JvL7g\nzBmU5tGGYOFJdDdtgMjVfHd5x3MdPBFas4fVfx9pnwJSkS8lYpgc3DpttXCRr9wA\nVQbgLLIdbXjFb6g58VQhhwOh+Bw5e96vXi/N3ze/AoGAC02vuu+UXw0sakLqLTOJ\nm2acBQo8Gjc17sxRJm8NBtOWhp3gHWAkpczGTuflptZwZ4hhvWLt5xUYR1fRF34J\nFRZRhQOn9X3+PO6BC8mTsq2WLDTcNO80BiodFHsIEiAleB0p0ODYpv9Oy3Ez+B+B\nf8TG+ToxtMkWt1LrDYpwGNI=\n-----END PRIVATE KEY-----\n"'  # Adicione uma chave secreta
+app.config['1d448da9230a198fc08a16401cdceb83b094b1d6'] = os.getenv('SECRET_KEY')
 
-# Defina o caminho do arquivo JSON diretamente
-cred = credentials.Certificate("C:/Users/Abdaisy Conaição/Desktop/PI1/salvação/programacao-avancada-com-python-10794/dreambuilder-5a4ea-firebase-adminsdk-ek7ia-1d448da923.json")
+# Obtenha o diretório do script atual
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Construa o caminho para o arquivo de credenciais
+cred_path = os.path.join(current_dir, 'serviceAccountKey.json')
+
+# Use o caminho construído para o seu arquivo JSON de credenciais
+cred = credentials.Certificate('dreambuilder-5a4ea-firebase-adminsdk-ek7ia-1d448da923.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -40,6 +42,8 @@ def login():
             user = user_ref[0].to_dict()
             if user and check_password_hash(user['pass'], password):
                 session['user_id'] = user_ref[0].id
+                session['user_role'] = user.get('role', 'user')
+                user_ref[0].reference.update({'lastLogin': firestore.SERVER_TIMESTAMP})
                 return redirect(url_for('dashboard'))
         
         flash('Email ou senha incorretos.')
@@ -52,22 +56,48 @@ def signup():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-        # Para este exemplo, não há persistência de dados
+        name = request.form['name']
+        
+        # Verifica se o usuário já existe
+        existing_user = db.collection('Users').where('Email', '==', email).limit(1).get()
+        if existing_user:
+            flash('Email já cadastrado.')
+            return render_template('signup.html')
+        
+        # Cria novo usuário
+        new_user = {
+            'Email': email,
+            'pass': generate_password_hash(password),
+            'Nome': name,
+            'role': 'user',
+            'CreatedAt': firestore.SERVER_TIMESTAMP,
+            'lastLogin': firestore.SERVER_TIMESTAMP,
+            'Foto perfil': ''  # Pode ser atualizado posteriormente
+        }
+        
+        db.collection('Users').add(new_user)
         flash('Cadastro realizado com sucesso! Faça login.')
         return redirect(url_for('login'))
-    return render_template('signup.html')
+    
+   # rever return render_template('signup.html')
 
 # Rota para o painel de controle
 @app.route('/dashboard')
 def dashboard():
-    if 'user_id' in session:
-        return render_template('dashboard.html', user_id=session['user_id'])
+    if 'user_id' not in session:
+      return redirect(url_for('login'))
+    
+    user_ref = db.collection('Users').document(session['user_id']).get()
+    if user_ref.exists:
+        user_data = user_ref.to_dict()
+        return render_template('dashboard.html', user=user_data)
+    
     return redirect(url_for('login'))
 
 # Rota para logout
 @app.route('/logout')
 def logout():
-    session.pop('user_id', None)  # Remove o usuário da sessão
+    session.clear()
     return redirect(url_for('home'))
 
 # Rota para a página index2
@@ -79,6 +109,67 @@ def index2():
 @app.route('/index3')
 def index3():
     return render_template('index3.html')
+
+@app.route('/index4')
+def index4():
+    return render_template('index4.html')
+
+@app.route('/index5')
+def index5():
+    return render_template('index5.html')
+
+@app.route('/index6')
+def index6():
+    return render_template('index6.html')
+
+@app.route('/index7')
+def index7():
+    return render_template('index7.html')
+
+@app.route('/index8')
+def index8():
+    return render_template('index8.html')
+
+@app.route('/proccomp')
+def proccomp():
+    return render_template('proccomp.html')
+
+@app.route('/usuarios', methods=['POST'])
+def criar_usuario():
+    dados = request.json
+    if not dados or 'email' not in dados or 'password' not in dados or 'nome' not in dados:
+        return jsonify({"erro": "Dados incompletos"}), 400
+    
+    # Verifica se o usuário já existe
+    existing_user = db.collection('Users').where('Email', '==', dados['email']).limit(1).get()
+    if len(existing_user) > 0:
+        return jsonify({"erro": "Email já cadastrado"}), 409
+    
+    # Cria novo usuário
+    new_user = {
+        'Email': dados['email'],
+        'pass': generate_password_hash(dados['password']),
+        'Nome': dados['nome'],
+        'role': 'user',
+        'CreatedAt': firestore.SERVER_TIMESTAMP,
+        'lastLogin': firestore.SERVER_TIMESTAMP,
+        'Foto perfil': dados.get('foto_perfil', '')
+    }
+    
+    doc_ref = db.collection('Users').document()
+    doc_ref.set(new_user)
+    return jsonify({"mensagem": "Usuário criado com sucesso", "id": doc_ref.id}), 201
+
+@app.route('/usuarios/<id>', methods=['GET'])
+def obter_usuario(id):
+    doc_ref = db.collection('Users').document(id)
+    doc = doc_ref.get()
+    if doc.exists:
+        user_data = doc.to_dict()
+        # Remove a senha hash dos dados retornados por segurança
+        user_data.pop('pass', None)
+        return jsonify(user_data), 200
+    return jsonify({"erro": "Usuário não encontrado"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
