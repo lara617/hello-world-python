@@ -3,22 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
     <title>APIs e API Gateway</title>
-
-   
-
-   
+    <link rel="stylesheet" href="/FLASK/static/css/styles2.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Introdução a APIs e API Gateway</h1>
         </header>
-
-        <img src="{{ url_for('static', filename='images/imagen-1.png') }}" alt="Ilustração de APIs" class="imagem-principal">
-
-       
+        <img src="/FLASK/static/images/imagen-1.png" alt="Ilustração de APIs"  class="imagem-principal">
         <h2>API</h2>
 
         API<b> (Application Programming Interface)</b> conjunto de regras e definições que permite que softwares  comuniquem entre si,<br>
@@ -30,14 +23,12 @@
 
         <h3>Tipos de API:</h3>
         <p><li><b>APIs REST:</b> Seguem princípios do protocolo <a href="https://developer.mozilla.org/pt-BR/docs/Web/HTTP" target="_blank"><strong>HTTP</strong></a>, permitindo que clientes façam requisições para recursos específicos via URL.</li></p>
-
-        <img src="{{ url_for('static', filename='images/imagen-2.mhtml') }}" alt="Ilustração de APIs" class="imagem2">
+        <img src="/FLASK/static/images/imagen-2.png" alt="Ilustração de APIs" class="imagem2">
         <p><li><b>APIs SOAP:</b> Usam <a href="https://developer.mozilla.org/en-US/docs/Web/XML" target="_blank"><strong>XML</strong></a> e são mais estruturadas, porém mais complexas.</li></p>
-        <img src="{{ url_for('static', filename='images/imagen-2.png') }}" alt="Ilustração de APIs" class="imagem2"> 
+        <img src="/FLASK/static/images/imagen-3.avif" alt="Ilustração de APIs"  class="imagem2">
         <p><li><b>GraphQL:</b> Permite consultas mais flexíveis, onde o cliente define quais dados quer receber</li></p>
-        <img src="{{ url_for('static', filename='images/imagen4.mhtml') }}" alt="Ilustração de APIs" class="imagem">
+        <img src="/FLASK/static/images/imagen4.jpg" alt="Ilustração de APIs"  class="imagem2">
 
-       
         <h3>Benefícios de uma API</h3>
         <p><b>Integração fácil :</b> Permitem que diferentes sistemas troquem dados de maneira simples e eficiente.</p>
         <p><b>Automação: </b>Processos que antes eram manuais podem ser automatizados usando APIs.</p>
@@ -59,10 +50,7 @@
         <h3>Exemplo</h3>
         Um aplicativo de <b>e-commerce</b> que tem diferentes APIs para gerenciar estoque, pagamento e entrega.<br>
         O <b>API Gateway</b> recebe todas as requisições do cliente (como verificar estoque ou processar um pagamento), autentica o cliente e distribui essas requisições para os serviços adequados no backend.
-
-        <img src="{{ url_for('static', filename='images/imagen-5.png') }}" alt="Ilustração de APIs" class="imagem5">
-
-       
+        <img src="/FLASK/static/images/imagen-5.png" alt="Ilustração de APIs" class="imagem5">
 
         <h3>Vantagens do API Gateway</h3>
         <p><b>Segurança centralizada:</b> Ele é o responsável por autenticar usuários, garantindo que os serviços backend estejam protegidos.</p>
@@ -135,11 +123,8 @@
         <p>Elas permitem que diferentes serviços conversem entre si, trazendo escalabilidade, segurança e eficiência para  as empresas.</p>
             <p>APIs permitem que sistemas se comuniquem.</p>
             <p>API Gateway facilita o gerenciamento, roteamento e segurança dessas APIs, sendo essencial para arquiteturas mais complexas.</p>
-
-            <a href="{{ url_for('home') }}"><button class="meu-botao">Voltar</button></a>
-
     
-          
+            <a href="/FLASK/templates/index.html"><button class="meu-botao">Voltar</button></a>
     </div>
 </body>
 </html>
