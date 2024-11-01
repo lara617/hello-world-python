@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organização de um Computador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles5.css') }}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Organização de um Computador</h1>
+        <div class="content-wrapper">
+            <h2>O que é um computador </h2>
+            <h3><p>Um computador é uma máquina eletrônica projetada para processar dados, operando por meio de um ciclo contínuo que envolve 
+            três componentes principais: entrada, processamento e saída.</p>
+
+            <p>A entrada refere-se aos dados ou informações que o computador recebe para processamento, que podem ser inseridos através de 
+            dispositivos como teclado, mouse, scanner e microfone. Esses dispositivos transformam informações do mundo real em um formato que o 
+            computador pode entender.</p>
+            
+            <p>O cérebro do computador é o processamento, que ocorre na Unidade Central de Processamento (CPU). 
+            A CPU executa instruções de um programa, realizando operações lógicas e aritméticas, além de armazenar temporariamente 
+            os dados na memória RAM, que permite acesso rápido às informações durante as operações.</p>
+            
+            <p>Após o processamento, o computador gera saídas, que são os resultados das operações realizadas, apresentados em várias 
+            formas por dispositivos como monitores, impressoras e alto-falantes. Esses dispositivos permitem que o usuário visualize ou 
+            interaja com os resultados do processamento.</p>
+            
+            <p>O funcionamento do computador pode ser descrito como um ciclo de entrada-processamento-saída, onde os dados são recebidos, 
+            processados pela CPU e, finalmente, convertidos em resultados visíveis ao utilizador. Além disso, os computadores possuem componentes de
+             armazenamento que permitem guardar dados e programas para uso futuro, utilizando discos rígidos ou armazenamento em nuvem.</p>
+        </h3>
+        <center><img src="{{ url_for('static', filename='images/computador.jpg') }}" alt="img" width="400"></center>
+<br>
+<h2>Etapas da execução de uma tarefa no computador</h2>
+<h3>O processamento de uma tarefa em um computador envolve várias etapas, desde a entrada até a saída final. Processo de abrir um programa, 
+    através de um navegador web:
+
+<p>O processamento de uma tarefa no computador começa com a entrada do usuário, como um clique no ícone do navegador. O sistema operacional interpreta 
+    o comando, localiza o programa na memória de armazenamento e carrega-o na memória RAM para facilitar o acesso rápido.</p>
+
+   <p> Com o programa carregado, a CPU inicia a execução, processando o código e carregando componentes da interface,
+     como a barra de endereços e botões. A interface gráfica é apresentada na tela, permitindo que o utilizador comece a interagir com o navegador.</p>
+
+    <p>Cada nova interação do usuário, como acessar uma página web, desencadeia um ciclo de processamento em que o navegador solicita e exibe os dados. 
+        Esse ciclo de entrada, processamento e saída ilustra o fluxo de tarefas no computador, onde sistema operacional, CPU e memória trabalham juntos
+         para realizar as operações de forma eficiente.</p></h3>
+<br>
+<h2> Unidades de execução de tarefas</h2>
+<h3>O computador opera como um conjunto de unidades de execução que trabalham em sincronia para processar dados e realizar operações.
+
+    <p>CPU: Conhecida como o “cérebro” do computador, a CPU executa instruções, realiza cálculos e toma decisões com base nos comandos dos programas.</p>
+    
+    <p>Memória: A memória RAM armazena temporariamente os dados e instruções dos programas enquanto estão em execução, garantindo que a CPU tenha acesso
+         rápido às informações necessárias. O armazenamento permanente, como HDs e SSDs, guarda dados para uso futuro.</p>
+
+    <p>Dispositivos de Entrada/Saída (I/O): Dispositivos de entrada, como o teclado e o mouse, permitem que o usuário forneça comandos e dados, enquanto 
+        dispositivos de saída, como o monitor, mostram os resultados processados pela CPU.</p><br>
+
+    <p><u>Como trabalham em conjunto?</u></p>
+    <p>O utilizador fornece uma entrada, a CPU processa as instruções com o suporte da memória, e os resultados são exibidos nos dispositivos de saída.
+         Esse ciclo de entrada-processamento-saída permite que o computador funcione como um sistema coordenado, respondendo rapidamente às ações do usuário.</p>
+</h3>
+
+    </div>
+        <div class="back-button">
+            <a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a>
+        </div>
+    </div>
+    <script>
+       const canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particlesArray;
+
+class Particle {
+    constructor(x, y, size, color, weight) {
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.color = color;
+        this.weight = weight;
+    }
+    update() {
+        // Reduzindo o incremento para uma descida extremamente lenta
+        this.weight += 0.001; // Valor bem baixo para uma queda muito lenta
+        this.y += this.weight;
+        this.x += Math.sin(this.weight) * 0.2; // Movimento lateral muito leve
+        if (this.y > canvas.height) {
+            this.y = 0 - this.size;
+            this.weight = Math.random() * 0.05 + 0.02; // Peso inicial extremamente leve para descer devagar
+            this.x = Math.random() * canvas.width * 1.3;
+        }
+    }
+    draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.fill();
+    }
+}
+
+function init() {
+    particlesArray = [];
+    for (let i = 0; i < 100; i++) {
+        let size = Math.random() * 5 + 1;
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height;
+        let color = 'rgba(173, 216, 230, 0.8)';
+        let weight = Math.random() * 0.05 + 0.02; // Peso inicial extremamente baixo
+        particlesArray.push(new Particle(x, y, size, color, weight));
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
+    }
+    requestAnimationFrame(animate);
+}
+
+init();
+animate();
+
+window.addEventListener('resize', function () {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    init();
+});
+
+
+    </script>
+</body>
+</html>

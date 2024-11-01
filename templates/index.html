@@ -12,7 +12,7 @@
 
     <div style="overflow: hidden;">
         <img src="{{ url_for('static', filename='images/logo-removebg-preview.png') }}" alt="img" width="300" style="float: right; margin-left: 20px;">
-<h1>Documentação do projeto: Dreambuilder</h1>
+<h1>Documentação do projeto: Dreambuilder.</h1>
 
 <h3>A Dreambuilder é uma aplicação web que consiste em ajudar users a realizar/concretizar metas/sonhos. 
     <br>Consoante a meta e o tempo disponível, a Dreambuilder vai construir um plano
@@ -32,7 +32,18 @@
     <img src="{{ url_for('static', filename='images/diagram2.png') }}" alt="img" width="600"> <!-- Ajuste o valor de margin-left conforme necessário -->
     <img src="{{ url_for('static', filename='images/diagram1.png') }}" alt="img" width="1200"> <!-- Ajuste o valor de margin-right conforme necessário -->
 
+
 </div>
+
+
+ <!-- Botão para ir à página de login -->
+ <a href="{{ url_for('login') }}">
+    <button type="button">Login</button>
+</a>
+
+
+</div>
+
    
 
 
@@ -46,7 +57,7 @@
         </ul>
 
 <div class="imagem-container">
-    <img src="{{ url_for('static', filename='images/img.1.png') }}" alt="img">
+    <img src="{{ url_for('static', filename='images/img.1.mhtml') }}" alt="img">
      </div>
  <br><br>
      <p><h3>Para este projeto vamos integrar 6 módulos:<p></p>
@@ -56,7 +67,10 @@
         <li>Administração de bases de dados para programadores (3933)</li>
         <li>Programação de sistemas distribuídos - JAVA (0816)</li>
         <li>Programação avançada com Python (10794)</li><br>
-        
+        <a href="{{ url_for('proccomp') }}">
+            <button class="redirect-button">Ir para Processamento Computacional</button>
+        </a>
+
         <p>Para este trabalho, vamos utilizar as linguagens: C/C++, Python, Java</p>
 
     <h3>Como dividimos o trabalho:</h3>
