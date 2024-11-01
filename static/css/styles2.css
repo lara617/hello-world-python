@@ -110,6 +110,8 @@ img {
     margin: 20px auto;
 }
 
+
+
 .imagem2, .imagem3, .imagem4, .imagem5 {
     display: block;
     max-width: 50%; /* Diminui o tamanho máximo das imagens */
