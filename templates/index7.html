@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Processador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles8.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Processador</h1>
+        <h2>Unidade Central de Processamento (CPU)</h2>
+      </header>
+
+      <section>
+        <p>O processador, também conhecido como Unidade Central de Processamento (CPU), é o componente mais importante de um computador, responsável por realizar cálculos, executar programas e gerenciar todas as operações internas da máquina. Ele trabalha em conjunto com a memória e outros dispositivos para garantir que o computador funcione de maneira rápida e eficiente.</p>
+      </section>
+
+      <section>
+        <h2>Estrutura Básica do Processador</h2>
+        <p>O processador é composto por várias unidades que, juntas, permitem a execução de instruções. As duas principais unidades internas do processador são:</p>
+        <ol>
+          <li>
+            <h3>Unidade Lógica e Aritmética (ULA ou ALU)</h3>
+            <p>A Unidade Lógica e Aritmética (ULA ou, em inglês, ALU - Arithmetic Logic Unit) é o componente do processador responsável pela realização de operações matemáticas e lógicas. Entre suas principais funções estão:</p>
+            <ul>
+              <li>Operações Aritméticas: Como soma, subtração, multiplicação e divisão.</li>
+              <li>Operações Lógicas: Comparações entre valores (como maior, menor, igual) e operações lógicas (como AND, OR, NOT).</li>
+            </ul>
+            <p>A ULA recebe dados que são carregados de registradores (unidades de armazenamento temporário dentro da CPU), realiza a operação necessária e envia o resultado de volta para a memória ou para outro registrador. Essas operações são essenciais para todas as funções de um processador, desde cálculos simples até a execução de algoritmos mais complexos.</p>
+          </li>
+          <li>
+            <h3>Unidade de Controle (UC ou CU)</h3>
+            <p>A Unidade de Controle (UC ou, em inglês, CU - Unidade de Controle) é responsável por coordenar todas as atividades do processador. Sua principal função é gerenciar o fluxo de dados entre os diversos componentes do sistema, além de buscar, decodificar e executar as instruções contidas nos programas. As etapas que a Unidade de Controle segue são:</p>
+            <ul>
+              <li><strong>Buscar:</strong> Localiza a instrução na memória e a traz para o processador.</li>
+              <li><strong>Decodificação:</strong> Interpreta a instrução, identificando que operação a ULA ou outro componente deve realizar.</li>
+              <li><strong>Execução:</strong> Executa as instruções e armazena o resultado, se necessário.</li>
+            </ul>
+            <p>A Unidade de Controle é fundamental para que o processador saiba o que fazer e quando fazer, orquestrando todo o trabalho da CPU de forma eficiente.</p>
+          </li>
+        </ol>
+      </section>
+
+      <div class="diagram centered">
+        <div class="diagram-item">
+          <h3>Operações</h3>
+          <ul>
+            <li>Aritméticas</li>
+            <li>Lógicas</li>
+          </ul>
+        </div>
+        <div class="diagram-item">
+          <h3>Unidade de Controle (UC)</h3>
+          <p>Gerencia o fluxo de dados:</p>
+          <ul>
+            <li>Buscar instruções</li>
+            <li>Decodificar</li>
+            <li>Executar</li>
+          </ul>
+        </div>
+      </div>
+
+      <section>
+        <h2>Funcionamento Interno de um Processador Simples</h2>
+        <p>Esse ciclo de buscar, decodificar e executar ocorre várias vezes por segundo, permitindo que o processador execute milhares ou até milhões de operações rapidamente. Em aceleração moderna, esse ciclo é otimizado e realizado em paralelo para maximizar a eficiência.</p>
+      </section>
+
+      <div class="processador-container">
+        <div class="processador-box">
+          <h2>Busca da Instrução</h2>
+          <p>A UC busca a instrução na memória.</p>
+          <p>Ex: "soma 5 e 3"</p>
+        </div>
+        <svg viewBox="0 0 100 100" class="processador-arrow">
+          <line x1="90" y1="50" x2="10" y2="50" class="arrow-line" />
+          <polygon points="10,45 0,50 10,55" class="arrow-head" />
+        </svg>
+
+        <div class="processador-box">
+          <h2>Decodificação</h2>
+          <p>A UC interpreta a instrução.</p>
+          <p>Informa à ULA para somar.</p>
+        </div>
+        <svg viewBox="0 0 100 100" class="processador-arrow">
+          <line x1="90" y1="50" x2="10" y2="50" class="arrow-line" />
+          <polygon points="10,45 0,50 10,55" class="arrow-head" />
+        </svg>
+
+        <div class="processador-box">
+          <h2>Execução pela ULA</h2>
+          <p>A ULA soma os números.</p>
+          <p>Resultado: 8</p>
+        </div>
+        <svg viewBox="0 0 100 100" class="processador-arrow">
+          <line x1="90" y1="50" x2="10" y2="50" class="arrow-line" />
+          <polygon points="10,45 0,50 10,55" class="arrow-head" />
+        </svg>
+
+        <div class="processador-box">
+          <h2>Armazenamento</h2>
+          <p>Resultado é armazenado.</p>
+          <p>Ex: no registrador ou memória.</p>
+        </div>
+      </div>
+
+      <section>
+        <h2>Outros Componentes Importantes do Processador</h2>
+        <p>Além da ULA e da Unidade de Controle, existem outros componentes que desempenham funções essenciais no processador. Estes são alguns deles:</p>
+        <ol>
+          <li>
+            <h3>Registradores</h3>
+            <p>Os registradores são pequenos espaços de armazenamento extremamente rápidos localizados dentro do próprio processador. Eles são usados ​​para armazenar dados temporários e valores intermediários que serão usados ​​nas operações. Como os registradores estão localizados na CPU, o acesso a eles é muito mais rápido do que o acesso à memória RAM.</p>
+            <ul>
+              <li><strong>Contador de Programa (PC):</strong> Um tipo especial de registrador que mantém o endereço da próxima instrução a ser realizado pelo processador.</li>
+              <li><strong>Registrador de Instrução (IR):</strong> Armazena uma instrução que está sendo realizada atualmente.</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Cache</h3>
+            <p>A memória cache é uma memória muito rápida que armazena os dados e instruções mais frequentemente usadas pela CPU. Ela é um intermediário entre o processador e a memória RAM, permitindo que a CPU acesse dados mais rapidamente, sem precisar esperar que eles sejam carregados da RAM, o que é mais lento.</p>
+            <p>Existem diferentes níveis de cache:</p>
+            <ul>
+              <li><strong>Cache L1:</strong> O mais próximo da CPU e também o mais rápido, mas com menor capacidade.</li>
+              <li><strong>Cache L2 e L3:</strong> São maiores em capacidade, mas um pouco mais lentos que o L1.</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Pipeline</h3>
+            <p>O pipeline é uma técnica utilizada em aceleração moderna para aumentar a eficiência e o desempenho. Ele permite que o processador trabalhe em várias instruções simultaneamente, dividindo o ciclo de execução em várias etapas (busca, decodificação, execução, etc.). Assim, enquanto uma instrução está sendo decodificada, outra já pode estar sendo executada. Essa abordagem aumenta a quantidade de trabalho que uma CPU pode realizar em um determinado período de tempo, melhorando significativamente o desempenho geral.</p>
+          </li>
+          <li>
+            <h3>Núcleos (Cores)</h3>
+            <p>Processadores modernos podem ter múltiplos núcleos, que são essencialmente vários núcleos dentro de um único chip. Cada núcleo pode processar suas próprias instruções, o que permite que o computador realize várias tarefas simultaneamente de forma mais eficiente. Isso é especialmente útil para aplicativos e tarefas que exigem alta capacidade de processamento.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Processadores Modernos e Multi-threading</h2>
+        <p>Com o avanço da tecnologia, os processadores modernos são capazes de suportar o processamento multi-threading e hyper-threading. Essa capacidade permite que um único núcleo de processamento gerencie várias tarefas simultaneamente, o que é especialmente útil para aplicações que exigem multitarefa intensiva e para jogos.</p>
+      </section>
+
+      <section>
+        <h2>Tipos de Processadores</h2>
+        <div class="processador-container">
+          <div class="processador-box">
+            <h3>Processadores de Desktop</h3>
+            <p>Projetados para computadores pessoais e oferecem alto desempenho.</p>
+          </div>
+          <div class="processador-box">
+            <h3>Processadores Móveis</h3>
+            <p>Projetados para dispositivos móveis, priorizando a eficiência energética.</p>
+          </div>
+          <div class="processador-box">
+            <h3>Processadores de Servidor</h3>
+            <p>Projetados para lidar com tarefas intensivas de computação, como hospedagem de servidores e renderização de gráficos complexos.</p>
+          </div>
+          <div class="processador-box">
+            <h3>Processadores de Baixa Potência</h3>
+            <p>Projetados para dispositivos de baixo consumo, como dispositivos IoT e dispositivos de computação embutida.</p>
+          </div>
+          <div class="processador-box">
+            <h3>Processadores Híbridos</h3>
+            <p>Combinam núcleos de alto desempenho e de eficiência, otimizando tanto para tarefas intensivas quanto para economia de energia.</p>
+          </div>
+          <div class="processador-box">
+            <h3>Processadores Gráficos (GPU)</h3>
+            <p>Desenvolvidos para processar gráficos de alta qualidade e utilizados em tarefas de computação pesada, como aprendizado de máquina.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Melhor Processador por Situação</h2>
+        <canvas id="processorChart"></canvas>
+        <ul>
+          <li><strong>Jogos de Alto Desempenho:</strong> Intel Core i9, AMD Ryzen 7</li>
+          <li><strong>Edição de Vídeo:</strong> Intel Core i7, AMD Ryzen 9</li>
+          <li><strong>Tarefas Cotidianas:</strong> Intel Core i5, AMD Ryzen 5</li>
+          <li><strong>Design Gráfico:</strong> Intel Core i7, AMD Ryzen 7</li>
+          <li><strong>Portabilidade e Bateria:</strong> Intel Core M, Qualcomm Snapdragon</li>
+          <li><strong>Aplicações em Nuvem:</strong> AMD EPYC, Intel Xeon</li>
+          <li><strong>Computação de Baixa Potência:</strong> ARM Cortex, Intel Atom</li>
+        </ul>
+      </section>
+
+      <div class="back-button">
+        <a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a>
+    </div>
+     
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+        const ctx = document.getElementById('processorChart').getContext('2d');
+        const processorChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: [
+              'Jogos de Alto Desempenho',
+              'Edição de Vídeo',
+              'Tarefas Cotidianas',
+              'Design Gráfico',
+              'Portabilidade e Bateria',
+              'Aplicações em Nuvem',
+              'Computação de Baixa Potência'
+            ],
+            datasets: [
+              {
+                label: 'Pontuação de Desempenho',
+                data: [90, 80, 70, 75, 60, 85, 55],
+                backgroundColor: [
+                  'rgba(0, 86, 179, 0.6)',
+                  'rgba(255, 87, 34, 0.6)',
+                  'rgba(76, 175, 80, 0.6)',
+                  'rgba(156, 39, 176, 0.6)',
+                  'rgba(255, 152, 0, 0.6)',
+                  'rgba(33, 150, 243, 0.6)',
+                  'rgba(96, 125, 139, 0.6)'
+                ],
+                borderColor: 'rgba(0, 0, 0, 0.1)',
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100
+              }
+            }
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
