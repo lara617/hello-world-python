@@ -9,7 +9,7 @@ from firebase_admin import credentials, firestore
 load_dotenv()
 
 app = Flask(__name__)
-app.config['1d448da9230a198fc08a16401cdceb83b094b1d6'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY', 'uma-chave-secreta-padrao')
 
 # Obtenha o diretório do script atual
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -79,7 +79,7 @@ def signup():
         flash('Cadastro realizado com sucesso! Faça login.')
         return redirect(url_for('login'))
     
-   # rever return render_template('signup.html')
+    return render_template('signup.html')
 
 # Rota para o painel de controle
 @app.route('/dashboard')
