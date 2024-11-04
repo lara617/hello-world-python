@@ -1,1 +1,5 @@
-const grandeBiblioteca = await import('grande-biblioteca') 
+const grandeBiblioteca = await import('grande-biblioteca')
+
+export const config = {
+    runtime: 'edge'
+  }
