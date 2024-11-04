@@ -132,15 +132,6 @@ h3{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Gráfico na parte inferior */
-.chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  margin-top: auto;
-}
 
 
 
@@ -187,4 +178,21 @@ h3{
 /* Remover as setas */
 .processador-arrow {
   display: none;
+}
+
+/* Estilo para o contêiner do gráfico */
+.chart-container {
+  display: flex; /* Usar flexbox para centralizar o gráfico */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  width: 100%; /* Largura total do contêiner */
+  padding: 20px; /* Espaçamento interno */
+  margin-top: 20px; /* Espaço acima do gráfico */
+  margin-bottom: 20px; /* Espaço abaixo do gráfico */
+}
+
+/* Estilo para o canvas do gráfico */
+.chart-container canvas {
+  width: 100% !important; /* Faz o canvas ocupar 100% da largura do contêiner */
+  height: auto !important; /* Mantém a proporção do gráfico */
 }
