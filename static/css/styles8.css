@@ -1,43 +1,35 @@
-/* Aplicando fonte global */
+/* Estrutura e estilo básicos */
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
   background-color: #0d1b2a;
+  overflow-x: hidden;
+  height: 100vh;
 }
 
-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
+/* Container principal */
 .container {
-  position: relative;
-  text-align: left;
   background-color: #ffffff;
-  padding: 50px;
+  padding: 20px; /* Diminui o padding para 20px */
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  animation: borderChange 4s infinite alternate;
-  width: 1200px;
-  height: 600px;  
-  overflow: auto;
-  box-sizing: border-box;
+  width: 60%; /* Largura permanece em 60% */
+  max-width: 900px; /* Largura máxima permanece em 900px */
+  height: auto; /* Permite que a altura se ajuste ao conteúdo */
+  max-height: 500px; /* Define um limite máximo de altura */
+  margin-top: 200px;
+  overflow-y: auto; /* Permite rolagem se o conteúdo exceder a altura */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  gap: 20px;
+  z-index: 1;
 }
+
+
+
 
 .content-wrapper {
   width: 100%;
@@ -45,95 +37,162 @@ canvas {
   overflow-y: auto;
   padding-right: 20px;
 }
+/* Canvas para a animação de neve */
+canvas#snowCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
 
-h1, h3 {
-  text-align: left;
+/* Título */
+h1.cloud-text {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2e4053;
+}
+
+/* Ciclo de Instrução */
+.ciclo-instrucao {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Caixa de cada fase do ciclo de instrução */
+.instrucao-box {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.instrucao-box h3 {
+  margin-top: 0;
+  color: #2e4053;
+  font-weight: 600;
+}
+
+/* Diagrama dos tipos de processadores */
+.processador-diagrama {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.processador-box {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 15px;
+  width: 45%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Gráfico na parte inferior */
+.chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
+  padding: 20px;
+  margin-top: auto;
 }
 
-h3 {
-  font-weight: normal; 
+
+
+/* Container do Processo de Instrução em Diagrama */
+.processador-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Duas colunas adaptáveis */
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
 }
 
-/* Animação do contorno para um efeito mais suave */
-@keyframes borderChange {
-  0% {
-      box-shadow: 0 0 20px 10px rgba(173, 216, 230, 0.5);
+/* Caixa de cada etapa do processo */
+.processador-box {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease; /* Animação sutil para hover */
+}
+
+.processador-box h2 {
+  color: #2e4053;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.processador-box p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Efeito Hover para destaque */
+.processador-box:hover {
+  transform: scale(1.05);
+}
+
+/* Remover as setas */
+.processador-arrow {
+  display: none;
+}
+
+/* Ajuste para layout de coluna única em telas pequenas */
+@media (max-width: 600px) {
+  .processador-container {
+    grid-template-columns: 1fr; /* Layout de uma coluna em telas menores */
   }
-  50% {
-      box-shadow: 0 0 20px 10px rgba(176, 196, 222, 0.5);
-  }
-  100% {
-      box-shadow: 0 0 20px 10px rgba(176, 224, 230, 0.5);
-  }
+}
+/* Estilo do botão "Voltar" */
+.back-button {
+  margin-left: auto; /* Empurra o botão para a direita */
+  justify-content: center; /* Centraliza horizontalmente */
+  margin-top: 20px; /* Espaçamento superior */
 }
 
 /* Estilo moderno dos botões */
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
 .modern-button {
-  background: linear-gradient(135deg, #90caf9, #2e4053);
-  color: #fff;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 30px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
+  background: linear-gradient(135deg, #90caf9, #2e4053); /* Gradiente */
+  color: #fff; /* Cor do texto */
+  border: none; /* Remove a borda */
+  padding: 15px 30px; /* Espaçamento interno */
+  border-radius: 30px; /* Bordas arredondadas */
+  font-size: 1.2rem; /* Tamanho da fonte */
+  cursor: pointer; /* Cursor de mão ao passar o mouse */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra do botão */
+  text-transform: uppercase; /* Texto em maiúsculas */
 }
 
+/* Efeito de hover para o botão */
 .modern-button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(135deg, #2e4053, #90caf9);
+  transform: translateY(-5px); /* Eleva o botão ao passar o mouse */
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
+  background: linear-gradient(135deg, #2e4053, #90caf9); /* Inverte o gradiente */
 }
-
-.cloud-text {
-  font-family: 'New Century Schoolbook', serif;
-  font-size: 3rem;
+/* Título com posição sticky */
+h1.cloud-text {
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #2e4053;
-  letter-spacing: 0.05em;
-  text-align: center;
-  line-height: 1.2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.progress-bar {
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 25px;
-  overflow: hidden;
-  margin: 20px 0;
-}
-
-.progress-bar-fill {
-  height: 20px;
-  background-color: #76c7c0;
-  text-align: center;
-  line-height: 20px;
-  color: white;
-  transition: width 0.5s;
-}
-
-.chart-container {
-  width: 100%; /* O gráfico ocupará 100% da largura do container */
-  height: auto; /* A altura se ajustará automaticamente */
-  display: flex; /* Usar flexbox para centralizar o gráfico */
-  justify-content: center; /* Centralizar horizontalmente */
-  align-items: center; /* Centralizar verticalmente */
-}
-
-.processador-arrow {
-  width: 50px; /* Ajuste o tamanho da seta */
-  height: 20px; /* Ajuste o tamanho da seta */
-  background-color: #2e4053; /* Cor da seta */
-  display: inline-block; /* Para que a seta apareça corretamente */
+  position: sticky; /* Mantém o título fixo até que o contêiner role */
+  top: 20px; /* Distância do topo quando sticky */
+  z-index: 1; /* Garante que fique acima de outros elementos */
+  background-color: #ffffff; /* Fundo branco para o título */
+  padding: 10px; /* Espaçamento interno */
+  border-radius: 10px; /* Bordas arredondadas */
 }
