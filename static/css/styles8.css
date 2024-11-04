@@ -108,22 +108,30 @@ h3 {
   transform: scale(1.02);
 }
 
+/* Gráfico na parte inferior */
 .chart-container {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 600px;
-  height: 300px;
-  margin: 20px auto;
+  padding: 20px;
+  margin-top: auto;
+}
+
+
+
+/* Container do Processo de Instrução em Diagrama */
+.processador-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Duas colunas adaptáveis */
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
 }
 
 /* Removendo elementos desnecessários */
 .processador-arrow {
   display: none;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 600px) {
-  .processador-container {
-    grid-template-columns: 1fr;
-  }
 }
