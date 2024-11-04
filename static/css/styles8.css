@@ -1,35 +1,43 @@
-/* Estrutura e estilo básicos */
+/* Aplicando fonte global */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
-  background-color: #0d1b2a;
-  overflow-x: hidden;
+  align-items: center;
   height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  background-color: #0d1b2a;
 }
 
-/* Container principal */
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
 .container {
+  position: relative;
+  text-align: left;
   background-color: #ffffff;
-  padding: 20px; /* Diminui o padding para 20px */
+  padding: 50px;
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  width: 60%; /* Largura permanece em 60% */
-  max-width: 900px; /* Largura máxima permanece em 900px */
-  height: auto; /* Permite que a altura se ajuste ao conteúdo */
-  max-height: 500px; /* Define um limite máximo de altura */
-  margin-top: 200px;
-  overflow-y: auto; /* Permite rolagem se o conteúdo exceder a altura */
+  z-index: 1;
+  animation: borderChange 4s infinite alternate;
+  width: 1200px;
+  height: 600px;  
+  overflow: auto;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  z-index: 1;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
-
-
-
 
 .content-wrapper {
   width: 100%;
@@ -37,162 +45,85 @@ body {
   overflow-y: auto;
   padding-right: 20px;
 }
-/* Canvas para a animação de neve */
-canvas#snowCanvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
 
-/* Título */
-h1.cloud-text {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #2e4053;
-}
-
-/* Ciclo de Instrução */
-.ciclo-instrucao {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* Caixa de cada fase do ciclo de instrução */
-.instrucao-box {
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.instrucao-box h3 {
-  margin-top: 0;
-  color: #2e4053;
-  font-weight: 600;
-}
-
-/* Diagrama dos tipos de processadores */
-.processador-diagrama {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-around;
-}
-
-.processador-box {
-  background-color: #f5f5f5;
-  border-radius: 10px;
-  padding: 15px;
-  width: 45%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Gráfico na parte inferior */
-.chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+h1, h3 {
+  text-align: left;
   width: 100%;
-  padding: 20px;
-  margin-top: auto;
 }
 
+h3 {
+  font-weight: normal; 
+}
 
+/* Animação do contorno */
+@keyframes borderChange {
+  0% {
+      box-shadow: 0 0 20px 10px rgba(173, 216, 230, 0.5);
+  }
+  50% {
+      box-shadow: 0 0 20px 10px rgba(176, 196, 222, 0.5);
+  }
+  100% {
+      box-shadow: 0 0 20px 10px rgba(176, 224, 230, 0.5);
+  }
+}
 
-/* Container do Processo de Instrução em Diagrama */
+/* Botão Voltar */
+.modern-button {
+  background: linear-gradient(135deg, #90caf9, #2e4053);
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+
+.modern-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #2e4053, #90caf9);
+}
+
+/* Estilos específicos para o conteúdo do processador */
 .processador-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Duas colunas adaptáveis */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-  justify-items: center;
-  margin-top: 20px;
-  width: 100%;
-  max-width: 800px;
+  margin: 20px 0;
 }
 
-/* Caixa de cada etapa do processo */
 .processador-box {
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 15px;
-  width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.2s ease; /* Animação sutil para hover */
+  transition: transform 0.2s ease;
 }
 
-.processador-box h2 {
-  color: #2e4053;
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-}
-
-.processador-box p {
-  margin: 0;
-  color: #555;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-/* Efeito Hover para destaque */
 .processador-box:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
-/* Remover as setas */
+.chart-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  margin: 20px auto;
+}
+
+/* Removendo elementos desnecessários */
 .processador-arrow {
   display: none;
 }
 
-/* Ajuste para layout de coluna única em telas pequenas */
+/* Ajustes responsivos */
 @media (max-width: 600px) {
   .processador-container {
-    grid-template-columns: 1fr; /* Layout de uma coluna em telas menores */
+    grid-template-columns: 1fr;
   }
-}
-/* Estilo do botão "Voltar" */
-.back-button {
-  margin-left: auto; /* Empurra o botão para a direita */
-  justify-content: center; /* Centraliza horizontalmente */
-  margin-top: 20px; /* Espaçamento superior */
-}
-
-/* Estilo moderno dos botões */
-.modern-button {
-  background: linear-gradient(135deg, #90caf9, #2e4053); /* Gradiente */
-  color: #fff; /* Cor do texto */
-  border: none; /* Remove a borda */
-  padding: 15px 30px; /* Espaçamento interno */
-  border-radius: 30px; /* Bordas arredondadas */
-  font-size: 1.2rem; /* Tamanho da fonte */
-  cursor: pointer; /* Cursor de mão ao passar o mouse */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra do botão */
-  text-transform: uppercase; /* Texto em maiúsculas */
-}
-
-/* Efeito de hover para o botão */
-.modern-button:hover {
-  transform: translateY(-5px); /* Eleva o botão ao passar o mouse */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
-  background: linear-gradient(135deg, #2e4053, #90caf9); /* Inverte o gradiente */
-}
-/* Título com posição sticky */
-h1.cloud-text {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #2e4053;
-  position: sticky; /* Mantém o título fixo até que o contêiner role */
-  top: 20px; /* Distância do topo quando sticky */
-  z-index: 1; /* Garante que fique acima de outros elementos */
-  background-color: #ffffff; /* Fundo branco para o título */
-  padding: 10px; /* Espaçamento interno */
-  border-radius: 10px; /* Bordas arredondadas */
 }
