@@ -3,13 +3,13 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
 import firebase_admin
-from firebase_admin import credentials, firestore
+#from firebase_admin import credentials, firestore
 
 # Carrega as variáveis do arquivo .env
 load_dotenv()
 
 app = Flask(__name__)
-app.config['1d448da9230a198fc08a16401cdceb83b094b1d6'] = os.getenv('SECRET_KEY')
+app.config['1d448da9230a198fc08a16401cdceb83b094b1d6'] = os.getenv('1d448da9230a198fc08a16401cdceb83b094b1d6')
 
 # Obtenha o diretório do script atual
 current_dir = os.path.dirname(os.path.abspath(__file__))
