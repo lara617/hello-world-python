@@ -20,6 +20,28 @@ canvas {
   z-index: 0;
 }
 
+
+/* Estilo para o contêiner do gráfico */
+.chart-container {
+  display: flex; /* Usar flexbox para centralizar o gráfico */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  width: 100%; /* Largura total do contêiner */
+  padding: 20px; /* Espaçamento interno */
+  margin-top: 20px; /* Espaço acima do gráfico */
+  margin-bottom: 20px; /* Espaço abaixo do gráfico */
+  background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo do contêiner (opcional) */
+  border-radius: 8px; /* Bordas arredondadas (opcional) */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra do contêiner (opcional) */
+}
+
+/* Estilo para o canvas */
+canvas {
+  display: block; /* Faz o canvas se comportar como um bloco */
+  width: 100% !important; /* Faz o canvas ocupar 100% da largura do contêiner */
+  height: auto !important; /* Mantém a proporção do gráfico */
+}
+
 .container {
   position: relative;
   text-align: left;
@@ -180,19 +202,3 @@ h3{
   display: none;
 }
 
-/* Estilo para o contêiner do gráfico */
-.chart-container {
-  display: flex; /* Usar flexbox para centralizar o gráfico */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  width: 100%; /* Largura total do contêiner */
-  padding: 20px; /* Espaçamento interno */
-  margin-top: 20px; /* Espaço acima do gráfico */
-  margin-bottom: 20px; /* Espaço abaixo do gráfico */
-}
-
-/* Estilo para o canvas do gráfico */
-.chart-container canvas {
-  width: 100% !important; /* Faz o canvas ocupar 100% da largura do contêiner */
-  height: auto !important; /* Mantém a proporção do gráfico */
-}
