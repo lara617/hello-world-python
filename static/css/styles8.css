@@ -46,16 +46,24 @@ canvas {
   padding-right: 20px;
 }
 
+
+.content-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
 h1, h3 {
   text-align: left;
   width: 100%;
 }
 
-h3 {
+h3{
   font-weight: normal; 
 }
 
-/* Animação do contorno */
+/* Animação do contorno para um efeito mais suave */
 @keyframes borderChange {
   0% {
       box-shadow: 0 0 20px 10px rgba(173, 216, 230, 0.5);
@@ -68,7 +76,15 @@ h3 {
   }
 }
 
-/* Botão Voltar */
+
+/* Estilo moderno dos botões */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 .modern-button {
   background: linear-gradient(135deg, #90caf9, #2e4053);
   color: #fff;
@@ -88,35 +104,34 @@ h3 {
   background: linear-gradient(135deg, #2e4053, #90caf9);
 }
 
-/* Estilos específicos para o conteúdo do processador */
-.processador-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+.cloud-text {
+  font-family: 'New Century Schoolbook', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #2e4053;
+  letter-spacing: 0.05em;
+  text-align: center;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Diagrama dos tipos de processadores */
+.processador-diagrama {
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
-  margin: 20px 0;
+  justify-content: space-around;
 }
 
 .processador-box {
   background-color: #f5f5f5;
   border-radius: 10px;
   padding: 15px;
+  width: 45%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
 }
 
-.processador-box:hover {
-  transform: scale(1.02);
-}
-
-/* Gráfico na parte inferior */
-.chart-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-  margin-top: auto;
-}
 
 
 
@@ -131,7 +146,53 @@ h3 {
   max-width: 800px;
 }
 
-/* Removendo elementos desnecessários */
+/* Caixa de cada etapa do processo */
+.processador-box {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease; /* Animação sutil para hover */
+}
+
+.processador-box h2 {
+  color: #2e4053;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.processador-box p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Efeito Hover para destaque */
+.processador-box:hover {
+  transform: scale(1.05);
+}
+
+/* Remover as setas */
 .processador-arrow {
   display: none;
+}
+
+/* Estilo para o contêiner do gráfico */
+.chart-container {
+  display: flex; /* Usar flexbox para centralizar o gráfico */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  width: 100%; /* Largura total do contêiner */
+  padding: 20px; /* Espaçamento interno */
+  margin-top: 20px; /* Espaço acima do gráfico */
+  margin-bottom: 20px; /* Espaço abaixo do gráfico */
+}
+
+/* Estilo para o canvas do gráfico */
+.chart-container canvas {
+  width: 100% !important; /* Faz o canvas ocupar 100% da largura do contêiner */
+  height: auto !important; /* Mantém a proporção do gráfico */
 }
