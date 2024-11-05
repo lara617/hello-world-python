@@ -180,7 +180,9 @@
 
       <section>
         <h2>Melhor Processador por Situação</h2>
-        <canvas id="processorChart"></canvas>
+        <div class="chart-container">
+            <div id="customCanvasContainer"></div> <!-- Usando um div como contêiner -->
+        </div>
         <ul>
           <li><strong>Jogos de Alto Desempenho:</strong> Intel Core i9, AMD Ryzen 7</li>
           <li><strong>Edição de Vídeo:</strong> Intel Core i7, AMD Ryzen 9</li>
@@ -197,49 +199,7 @@
     </div>
      
     
-      <script>
-        const ctx = document.getElementById('processorChart').getContext('2d');
-        const processorChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: [
-              'Jogos de Alto Desempenho',
-              'Edição de Vídeo',
-              'Tarefas Cotidianas',
-              'Design Gráfico',
-              'Portabilidade e Bateria',
-              'Aplicações em Nuvem',
-              'Computação de Baixa Potência'
-            ],
-            datasets: [
-              {
-                label: 'Pontuação de Desempenho',
-                data: [90, 80, 70, 75, 60, 85, 55],
-                backgroundColor: [
-                  'rgba(0, 86, 179, 0.6)',
-                  'rgba(255, 87, 34, 0.6)',
-                  'rgba(76, 175, 80, 0.6)',
-                  'rgba(156, 39, 176, 0.6)',
-                  'rgba(255, 152, 0, 0.6)',
-                  'rgba(33, 150, 243, 0.6)',
-                  'rgba(96, 125, 139, 0.6)'
-                ],
-                borderColor: 'rgba(0, 0, 0, 0.1)',
-                borderWidth: 1
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            scales: {
-              y: {
-                beginAtZero: true,
-                max: 100
-              }
-            }
-          }
-        });
-      </script>
+      
       <script>
         
 
@@ -305,7 +265,64 @@
           canvas.height = window.innerHeight;
           initParticles();
         });
-      </script>
+
+  // Aguarde o DOM estar completamente carregado
+  document.addEventListener('DOMContentLoaded', function() {
+      // Crie um elemento canvas dinamicamente
+      const canvasElement = document.createElement('canvas');
+      canvasElement.id = 'processorChart'; // Defina o ID do canvas
+      document.getElementById('customCanvasContainer').appendChild(canvasElement); // Adicione o canvas ao contêiner
+
+      // Crie um contexto 2D
+      const ctx = canvasElement.getContext('2d');
+
+      // Defina a largura e altura do canvas
+      canvasElement.width = document.getElementById('customCanvasContainer').clientWidth; // Largura do canvas
+      canvasElement.height = 400; // Defina uma altura fixa ou ajuste conforme necessário
+
+      // Crie o gráfico
+      const processorChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: [
+                  'Jogos de Alto Desempenho',
+                  'Edição de Vídeo',
+                  'Tarefas Cotidianas',
+                  'Design Gráfico',
+                  'Portabilidade e Bateria',
+                  'Aplicações em Nuvem',
+                  'Computação de Baixa Potência'
+              ],
+              datasets: [
+                  {
+                      label: 'Pontuação de Desempenho',
+                      data: [90, 80, 70, 75, 60, 85, 55],
+                      backgroundColor: [
+                          'rgba(0, 86, 179, 0.6)',
+                          'rgba(255, 87, 34, 0.6)',
+                          'rgba(76, 175, 80, 0.6)',
+                          'rgba(156, 39, 176, 0.6)',
+                          'rgba(255, 152, 0, 0.6)',
+                          'rgba(33, 150, 243, 0.6)',
+                          'rgba(96, 125, 139, 0.6)'
+                      ],
+                      borderColor: 'rgba(0, 0, 0, 0.1)',
+                      borderWidth: 1
+                  }
+              ]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  y: {
+                      beginAtZero: true,
+                      max: 100
+                  }
+              }
+          }
+      });
+  });
+</script>
     </div>
   </body>
 </html>
