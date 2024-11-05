@@ -6,12 +6,13 @@
     <title>Processador</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles8.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="container">
-      <header>
-        <h1>Processador</h1>
-        <h2>Unidade Central de Processamento (CPU)</h2>
+      <h1>Processador</h1>
+      <div class="content-wrapper">
+          <div class="content">
       </header>
 
       <section>
@@ -191,7 +192,7 @@
         <a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a>
     </div>
      
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
       <script>
         const ctx = document.getElementById('processorChart').getContext('2d');
         const processorChart = new Chart(ctx, {
@@ -233,6 +234,72 @@
               }
             }
           }
+        });
+      </script>
+      <script>
+        
+
+        const canvas = document.createElement("canvas");
+        document.body.appendChild(canvas);
+        const ctxParticle = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particlesArray;
+
+        class Particle {
+          constructor(x, y, size, color, weight) {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+            this.color = color;
+            this.weight = weight;
+          }
+          update() {
+            this.weight += 0.001;
+            this.y += this.weight;
+            this.x += Math.sin(this.weight) * 0.2;
+            if (this.y > canvas.height) {
+              this.y = 0 - this.size;
+              this.weight = Math.random() * 0.05 + 0.02;
+              this.x = Math.random() * canvas.width;
+            }
+          }
+          draw() {
+            ctxParticle.fillStyle = this.color;
+            ctxParticle.beginPath();
+            ctxParticle.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctxParticle.closePath();
+            ctxParticle.fill();
+          }
+        }
+
+        function initParticles() {
+          particlesArray = [];
+          for (let i = 0; i < 100; i++) {
+            let size = Math.random() * 5 + 1;
+            let x = Math.random() * canvas.width;
+            let y = Math.random() * canvas.height;
+            let color = "rgba(255,255,255,0.8)";
+            let weight = Math.random() * 0.02 + 0.02;
+            particlesArray.push(new Particle(x, y, size, color, weight));
+          }
+        }
+        initParticles();
+
+        function animateParticles() {
+          ctxParticle.clearRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+          }
+          requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        window.addEventListener('resize', function () {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          initParticles();
         });
       </script>
     </div>
