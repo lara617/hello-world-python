@@ -2,6 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
+from botoes import gerar_botoes
 
 # Carrega as variáveis do arquivo .env
 load_dotenv()
@@ -96,7 +97,9 @@ def index8():
 
 @app.route('/proccomp')
 def proccomp():
-    return render_template('proccomp.html')
+    botoes_html = gerar_botoes()
+    return render_template('proccomp.html', botoes_html=botoes_html)
+
 
 # Rota para criação de usuário (exemplo de rota de API)
 @app.route('/usuarios', methods=['POST'])
