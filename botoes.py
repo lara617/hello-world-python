@@ -1,14 +1,17 @@
-from flask import url_for
+from flask import redirect, url_for
+
+def acao_botao_1():
+    # Lógica para o botão 1
+    print("Botão 1 foi pressionado!")
+    return redirect(url_for('index3'))
+
+def acao_botao_2():
+    # Lógica para o botão 2
+    print("Botão 2 foi pressionado!")
+    return redirect(url_for('index2'))
 
 def gerar_botoes():
-    botoes = [
-        {"texto": "Organização de um Computador", "rota": "index4"},
-        {"texto": "Componentes do Computador", "rota": "index5"},
-        {"texto": "Unidade de Memória", "rota": "index6"},
-        {"texto": "Processador", "rota": "index7"}
-    ]
-    botoes_html = ""
-    for botao in botoes:
-        rota = url_for(botao["rota"])
-        botoes_html += f'<a href="{rota}"><button class="modern-button">{botao["texto"]}</button></a>\n'
-    return botoes_html
+    # Lógica para gerar botões
+    return ["Botão 1", "Botão 2"]
+
+
