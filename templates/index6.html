@@ -6,7 +6,7 @@
     <title>Unidade de Memória</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles7.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
 </head>
 <body>
     <div class="container">
@@ -87,50 +87,23 @@
                 </div>
 
                 <h2>Gráfico: Tipos de Memória e Velocidade</h2>
-                <div class="chart-container">
-                    <canvas id="memoryChart"></canvas>
-                </div>
-                
-                <script>
-                    const ctx = document.getElementById("memoryChart").getContext("2d");
-                    const memoryChart = new Chart(ctx, {
-                        type: "bar",
-                        data: {
-                            labels: ["RAM", "ROM", "Cache", "Memória Flash", "HDD", "SSD"],
-                            datasets: [
-                                {
-                                    label: "Velocidade (em MB/s)",
-                                    data: [3200, 150, 8000, 500, 120, 3000],
-                                    backgroundColor: [
-                                        "rgba(75, 192, 192, 0.2)",
-                                        "rgba(255, 99, 132, 0.2)",
-                                        "rgba(255, 205, 86, 0.2)",
-                                        "rgba(54, 162, 235, 0.2)",
-                                        "rgba(255, 159, 64, 0.2)",
-                                        "rgba(153, 102, 255, 0.2)",
-                                    ],
-                                    borderColor: [
-                                        "rgba(75, 192, 192, 1)",
-                                        "rgba(255, 99, 132, 1)",
-                                        "rgba(255, 205, 86, 1)",
-                                        "rgba(54, 162, 235, 1)",
-                                        "rgba(255, 159, 64, 1)",
-                                        "rgba(153, 102, 255, 1)",
-                                    ],
-                                    borderWidth: 1,
-                                },
-                            ],
-                        },
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true,
-                                },
-                            },
-                        },
-                    });
-                </script>
-
+               
+          
+             
+                  <div>
+        
+       
+                    <!-- Gráfico de Memória -->
+                            {{ graph_html | safe }}
+                        
+                          
+                    
+                            
+                    
+                       
+                    </div>
+                 
+          </div>
                 <p>
                     O gráfico de barras apresentado ilustra a
                     <strong>velocidade de transferência</strong> em
@@ -204,77 +177,8 @@
       <div class="back-button"><a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a></div>
     </div>
 
-    <!-- Script para barra de progresso -->
-    <script>
-      let memoryUsage = 0;
-      function updateMemoryUsage() {
-        memoryUsage += Math.floor(Math.random() * 10);
-        if (memoryUsage > 100) memoryUsage = 100;
-        const progressBarFill = document.getElementById("progressBarFill");
-        progressBarFill.style.width = memoryUsage + "%";
-        progressBarFill.innerText = memoryUsage + "% Utilizado";
-      }
-      setInterval(updateMemoryUsage, 1000);
-    </script>
+    
 
-    <!-- Script para partículas no fundo -->
-    <script>
-      const canvas = document.createElement("canvas");
-      document.body.appendChild(canvas);
-      const ctxParticle = canvas.getContext("2d");
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      let particlesArray;
-
-      class Particle {
-        constructor(x, y, size, color, weight) {
-          this.x = x;
-          this.y = y;
-          this.size = size;
-          this.color = color;
-          this.weight = weight;
-        }
-        update() {
-          this.weight += 0.001;
-          this.y += this.weight;
-          this.x += Math.sin(this.weight) * 0.2;
-          if (this.y > canvas.height) {
-            this.y = 0 - this.size;
-            this.weight = Math.random() * 0.05 + 0.02;
-            this.x = Math.random() * canvas.width;
-          }
-        }
-        draw() {
-          ctxParticle.fillStyle = this.color;
-          ctxParticle.beginPath();
-          ctxParticle.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctxParticle.closePath();
-          ctxParticle.fill();
-        }
-      }
-
-      function initParticles() {
-        particlesArray = [];
-        for (let i = 0; i < 100; i++) {
-          let size = Math.random() * 5 + 1;
-          let x = Math.random() * canvas.width;
-          let y = Math.random() * canvas.height;
-          let color = "rgba(255,255,255,0.8)";
-          let weight = Math.random() * 0.02 + 0.02;
-          particlesArray.push(new Particle(x, y, size, color, weight));
-        }
-      }
-      initParticles();
-
-      function animateParticles() {
-        ctxParticle.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = 0; i < particlesArray.length; i++) {
-          particlesArray[i].update();
-          particlesArray[i].draw();
-        }
-        requestAnimationFrame(animateParticles);
-      }
-      animateParticles();
-    </script>
+    
   </body>
 </html>
