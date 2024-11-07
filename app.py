@@ -2,20 +2,31 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-
-# Carrega as variáveis do arquivo .env
+# Carregar as variáveis do .env
 load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['1d448da9230a198fc08a16401cdceb83b094b1d6'] = os.getenv('SECRET_KEY')
+
+# Obtenha o diretório do script atual
+current_dir = os.path.dirname(os.path.abspath(__file__))
+# Construa o caminho para o arquivo de credenciais
+cred_path = os.path.join(current_dir, 'serviceAccountKey.json')
+
+# Use o caminho construído para o seu arquivo JSON de credenciais
+cred = credentials.Certificate('dreambuilder-5a4ea-firebase-adminsdk-ek7ia-1d448da923.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 # Rota para a página inicial
 @app.route('/')
 def home():
     return render_template('index.html')
 
-# Rota para a página de login
+# Rota de login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -26,19 +37,20 @@ def login():
             flash('Por favor, preencha todos os campos.')
             return render_template('login.html')
         
-        # Lógica para autenticar o usuário aqui
-        # Substitua isso pelo seu método de autenticação atual
-        user = {'email': 'exemplo@email.com', 'pass': generate_password_hash('senha')} # Exemplo de usuário
-        if user and check_password_hash(user['pass'], password):
-            session['user_id'] = 1  # Exemplo de ID de usuário
-            session['user_role'] = 'user'
-            return redirect(url_for('dashboard'))
+        user_ref = db.collection('Users').where('Email', '==', email).limit(1).get()
+        if user_ref:
+            user = user_ref[0].to_dict()
+            if user and check_password_hash(user['pass'], password):
+                session['user_id'] = user_ref[0].id
+                session['user_role'] = user.get('role', 'user')
+                user_ref[0].reference.update({'lastLogin': firestore.SERVER_TIMESTAMP})
+                return redirect(url_for('dashboard'))
         
         flash('Email ou senha incorretos.')
     
     return render_template('login.html')
 
-# Rota para a página de cadastro
+# Rota de cadastro
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -46,27 +58,49 @@ def signup():
         password = request.form['password']
         name = request.form['name']
         
-        # Lógica para verificar e criar um novo usuário aqui
+        # Verifica se o usuário já existe
+        existing_user = db.collection('Users').where('Email', '==', email).limit(1).get()
+        if existing_user:
+            flash('Email já cadastrado.')
+            return render_template('signup.html')
+        
+        # Cria novo usuário
+        new_user = {
+            'Email': email,
+            'pass': generate_password_hash(password),
+            'Nome': name,
+            'role': 'user',
+            'CreatedAt': firestore.SERVER_TIMESTAMP,
+            'lastLogin': firestore.SERVER_TIMESTAMP,
+            'Foto perfil': ''  # Pode ser atualizado posteriormente
+        }
+        
+        db.collection('Users').add(new_user)
         flash('Cadastro realizado com sucesso! Faça login.')
         return redirect(url_for('login'))
     
-    return render_template('signup.html')
+   # rever return render_template('signup.html')
 
-# Rota para o painel de controle
+# Rota do painel de controle
 @app.route('/dashboard')
 def dashboard():
     if 'user_id' not in session:
         return redirect(url_for('login'))
     
-    return render_template('dashboard.html')
+    user_ref = db.collection('Users').document(session['user_id']).get()
+    if user_ref.exists:
+        user_data = user_ref.to_dict()
+        return render_template('dashboard.html', user=user_data)
+    
+    return redirect(url_for('login'))
 
-# Rota para logout
+# Rota de logout
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('home'))
 
-# Rotas para as outras páginas
+# Rota para a página index2
 @app.route('/index2')
 def index2():
     return render_template('index2.html')
@@ -99,24 +133,42 @@ def index8():
 def proccomp():
     return render_template('proccomp.html')
 
-
-
-# Rota para criação de usuário (exemplo de rota de API)
 @app.route('/usuarios', methods=['POST'])
 def criar_usuario():
     dados = request.json
     if not dados or 'email' not in dados or 'password' not in dados or 'nome' not in dados:
         return jsonify({"erro": "Dados incompletos"}), 400
+    
+    # Verifica se o usuário já existe
+    existing_user = db.collection('Users').where('Email', '==', dados['email']).limit(1).get()
+    if len(existing_user) > 0:
+        return jsonify({"erro": "Email já cadastrado"}), 409
+    
+    # Cria novo usuário
+    new_user = {
+        'Email': dados['email'],
+        'pass': generate_password_hash(dados['password']),
+        'Nome': dados['nome'],
+        'role': 'user',
+        'CreatedAt': firestore.SERVER_TIMESTAMP,
+        'lastLogin': firestore.SERVER_TIMESTAMP,
+        'Foto perfil': dados.get('foto_perfil', '')
+    }
+    
+    doc_ref = db.collection('Users').document()
+    doc_ref.set(new_user)
+    return jsonify({"mensagem": "Usuário criado com sucesso", "id": doc_ref.id}), 201
 
-    # Lógica para criar um novo usuário aqui
-    return jsonify({"mensagem": "Usuário criado com sucesso", "id": 1}), 201  # ID fictício
-
-# Rota para obtenção de usuário (exemplo de rota de API)
 @app.route('/usuarios/<id>', methods=['GET'])
 def obter_usuario(id):
-    # Lógica para obter dados do usuário aqui
-    user_data = {"id": id, "nome": "Exemplo", "email": "exemplo@email.com"}
-    return jsonify(user_data), 200
+    doc_ref = db.collection('Users').document(id)
+    doc = doc_ref.get()
+    if doc.exists:
+        user_data = doc.to_dict()
+        # Remove a senha hash dos dados retornados por segurança
+        user_data.pop('pass', None)
+        return jsonify(user_data), 200
+    return jsonify({"erro": "Usuário não encontrado"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
