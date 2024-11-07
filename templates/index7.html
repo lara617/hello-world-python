@@ -180,9 +180,19 @@
 
       <section>
         <h2>Melhor Processador por Situação</h2>
-        <div class="chart-container">
-            <div id="customCanvasContainer"></div> <!-- Usando um div como contêiner -->
+        <div>
+        
+    
+          <div>
+            {{ graph_html | safe }}
         </div>
+    
+        
+        
+          
+                 
+                
+          </div>
         <ul>
           <li><strong>Jogos de Alto Desempenho:</strong> Intel Core i9, AMD Ryzen 7</li>
           <li><strong>Edição de Vídeo:</strong> Intel Core i7, AMD Ryzen 9</li>
@@ -200,7 +210,7 @@
      
     
       
-
+      
     </div>
   </body>
 </html>

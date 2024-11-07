@@ -6,7 +6,7 @@
     <title>Unidade de Memória</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles5.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
 </head>
 <body>
    <div class="container">
@@ -86,17 +86,13 @@
                 Esta barra de progresso mostra a utilização de memória simulada.
             </div>
 
-            <h2>Gráfico: Tipos de Memória e Velocidade</h2>
-
-            grafico 
-
-            <p></p>
-                O gráfico de barras apresentado ilustra a
-                <strong>velocidade de transferência</strong> em
-                <strong>megabytes por segundo (MB/s)</strong> de diferentes tipos de
-                memória. Abaixo, detalhamos cada tipo de memória e sua respectiva
-                velocidade:
-            </p>
+                <p>
+                    O gráfico de barras apresentado ilustra a
+                    <strong>velocidade de transferência</strong> em
+                    <strong>megabytes por segundo (MB/s)</strong> de diferentes tipos de
+                    memória. Abaixo, detalhamos cada tipo de memória e sua respectiva
+                    velocidade:
+                </p>
 
             <h2>1. RAM (Random Access Memory)</h2>
             <p><strong>Velocidade</strong>: 3200 MB/s</p>
@@ -149,21 +145,19 @@
                 capacidade de armazenamento.
             </p>
 
-            <h2>6. SSD (Solid State Drive)</h2>
-            <p><strong>Velocidade</strong>: 3000 MB/s</p>
-            <p>
-                <strong>Descrição</strong>: Os SSDs são muito mais rápidos que os
-                discos rígidos tradicionais, com uma velocidade de
-                <strong>3000 MB/s</strong>. Eles utilizam memória flash para armazenar
-                dados, oferecendo um desempenho significativamente melhor no acesso e
-                gravação de dados, sendo ideais para aumentar a eficiência de sistemas
-               
-              </div>
+                <h2>6. SSD (Solid State Drive)</h2>
+                <p><strong>Velocidade</strong>: 3000 MB/s</p>
+                <p>
+                    <strong>Descrição</strong>: Os SSDs são muito mais rápidos que os
+                    discos rígidos tradicionais, com uma velocidade de
+                    <strong>3000 MB/s</strong>. Eles utilizam memória flash para armazenar
+                    dados, oferecendo um desempenho significativamente melhor no acesso e
+                    gravação de dados, sendo ideais para aumentar a eficiência de sistemas
+                   
+                  </div>
+        </div>
+      <div class="back-button"><a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a></div>
     </div>
-                <div class="chart-container">
-                    <canvas id="memoryChart"></canvas>
-                </div>
-                
-                
+
   </body>
 </html>
