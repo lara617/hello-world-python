@@ -1,1 +1,0 @@
-# Este arquivo pode estar vazio, mas é necessário para que o diretório seja tratado como um pacote. 
