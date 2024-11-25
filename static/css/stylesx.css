@@ -1,5 +1,9 @@
 /* Aplicando fonte global */
 body {
+    background-image: url('/static/images/background.gif');
+    background-size: cover;  /* Isso vai ajustar o tamanho do fundo para cobrir toda a tela */
+    background-position: center;  /* Isso vai centralizar o GIF */
+    background-attachment: fixed; /* O fundo ficará fixo enquanto o usuário rola a página */
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,18 +36,6 @@ canvas {
     animation: borderChange 4s infinite alternate;
 }
 
-/* Animação do contorno para um efeito mais suave */
-@keyframes borderChange {
-    0% {
-        box-shadow: 0 0 20px 10px rgba(173, 216, 230, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 20px 10px rgba(176, 196, 222, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 20px 10px rgba(176, 224, 230, 0.5);
-    }
-}
 
 /* Estilo do título */
 h1 {
