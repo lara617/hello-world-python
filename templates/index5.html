@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Componentes do Computador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles5.css') }}"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Componentes do Computador</h1>
+        <div class="content-wrapper">
+            
+        <h2> Descrição das principais unidades componentes</h2>
+
+        <h3>Os principais componentes de um computador desempenham papéis essenciais, trabalhando em conjunto para garantir o funcionamento 
+        eficiente do sistema. Descrição dos componentes:
+
+        <p><u>Motherboard:</u> É a placa principal do computador, responsável por conectar todos os componentes e permitir que eles se comuniquem entre si. 
+        A mothernoard aloja o soquete da CPU, os slots de RAM, conectores de armazenamento e portas para dispositivos periféricos.
+        </p>
+        <center>
+            <img src="{{ url_for('static', filename='images/motherboard.png') }}" alt="Imagem da Motherboard" width="300">
+        </center>
+        <p><u>CPU (Unidade Central de Processamento):</u> Conhecida como o "cérebro" do computador, processa as instruções e realiza cálculos e operações lógicas.
+             Ela interpreta e executa comandos dos programas, gerenciando o fluxo de informações no sistema.
+        </p><center>
+            <img src="{{ url_for('static', filename='images/cpu.png') }}" alt="Imagem CPU" width="300">
+        </center>
+        <p><u>RAM (Memória de Acesso Aleatório):</u> A memória RAM armazena temporariamente os dados e programas em uso, fornecendo acesso rápido à CPU. 
+        Diferente do armazenamento permanente, os dados na RAM são apagados quando o computador é desligado.
+        </p><center>
+            <img src="{{ url_for('static', filename='images/ram.png') }}" alt="Imagem RAM" width="300">
+        </center>
+        <p><u>Dispositivos de Armazenamento:</u> Incluem discos rígidos (HDDs) e unidades de estado sólido (SSDs). Esses dispositivos armazenam dados e 
+        programas de forma permanente, permitindo que sejam acessados e carregados na memória RAM conforme necessário.
+        </p><center>
+            <img src="{{ url_for('static', filename='images/hddssd.png') }}" alt="Imagem HDD e SSD" width="300">
+        </center>
+        <p><u>Placa de Vídeo:</u> Responsável pelo processamento gráfico, a placa de vídeo lida com imagens e vídeos, garantindo que sejam exibidos corretamente 
+        na tela. Ela desempenha um papel crucial em tarefas visuais intensivas, como jogos e edição de vídeo.
+        </p><center>
+            <img src="{{ url_for('static', filename='images/pv.jpg') }}" alt="Imagem Placa de Video" width="300">
+        </center>
+        <p><u>Fonte de Alimentação:</u> Fornece energia a todos os componentes do computador, convertendo a energia elétrica da tomada para uma forma que
+         os componentes internos possam utilizar.
+        </p><center>
+            <img src="{{ url_for('static', filename='images/fonte.png') }}" alt="Imagem CPU" width="300">
+        </center>
+        Essas unidades trabalham juntas para processar, armazenar e exibir informações, fazendo do computador uma ferramenta funcional e eficiente.
+        
+       </h3> 
+        <h2>Na imagem abaixo mostra onde cada componente fica situado na morherboard </h2>
+    </p><center>
+        <img src="{{ url_for('static', filename='images/montagem.png') }}" alt="Imagem componentes" width="600">
+    </center>
+        
+        
+        
+        
+
+
+        </div>
+        <div class="back-button">
+            <a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

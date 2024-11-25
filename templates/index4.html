@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organização de um Computador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles5.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Organização de um Computador</h1>
+        <div class="content-wrapper">
+            <h2>O que é um computador </h2>
+            <h3><p>Um computador é uma máquina eletrônica projetada para processar dados que funciona em um ciclo contínuo de entrada, processamento e saída. 
+                Os dados são inseridos por dispositivos como teclado e mouse, processados pela CPU, que executa operações lógicas e aritméticas
+             (cálculos matemáticos básicos que o computador realiza), e armazenados temporariamente na memória RAM para acesso rápido. A saída apresenta
+              os resultados em monitores, impressoras ou alto-falantes, permitindo a interação do
+                  usuário. Além disso, o computador possui armazenamento em discos rígidos ou na nuvem, para guardar dados e programas para uso futuro.</p>
+        </h3>
+        <center><img src="{{ url_for('static', filename='images/computador.jpg') }}" alt="img" width="400"></center>
+<br>
+<h2>Etapas da execução de uma tarefa no computador</h2>
+<h3>O processamento de uma tarefa em um computador envolve várias etapas, desde a entrada até a saída final. Processo de abrir um programa, 
+    através de um navegador web:
+
+<p>O processamento de uma tarefa no computador começa com a entrada do usuário, como um clique no ícone do navegador. O sistema operacional interpreta 
+    o comando, localiza o programa na memória de armazenamento e carrega-o na memória RAM para facilitar o acesso rápido.</p>
+
+   <p> Com o programa carregado, a CPU inicia a execução, processando o código e carregando componentes da interface,
+     como a barra de endereços e botões. A interface gráfica é apresentada na tela, permitindo que o utilizador comece a interagir com o navegador.</p>
+   </h3>
+<br>
+<h2> Unidades de execução de tarefas</h2>
+<h3>O computador opera como um conjunto de unidades de execução que trabalham em sincronia para processar dados e realizar operações.
+
+    <p>CPU: Conhecida como o “cérebro” do computador, a CPU executa instruções, realiza cálculos e toma decisões com base nos comandos dos programas.</p>
+    
+    <p>Memória: A memória RAM armazena temporariamente os dados e instruções dos programas enquanto estão em execução, garantindo que a CPU tenha acesso
+         rápido às informações necessárias. O armazenamento permanente, como HDs e SSDs, guarda dados para uso futuro.</p>
+
+    <p>Dispositivos de Entrada/Saída (I/O): Dispositivos de entrada, como o teclado e o mouse, permitem que o usuário forneça comandos e dados, enquanto 
+        dispositivos de saída, como o monitor, mostram os resultados processados pela CPU.</p><br>
+
+    <p><u>Como trabalham em conjunto?</u></p>
+    <p>O utilizador fornece uma entrada, a CPU processa as instruções com o suporte da memória, e os resultados são exibidos nos dispositivos de saída.
+         Esse ciclo de entrada-processamento-saída permite que o computador funcione como um sistema coordenado, respondendo rapidamente às ações do usuário.</p>
+</h3>
+
+    </div>
+        <div class="back-button">
+            <a href="{{ url_for('proccomp') }}"><button class="modern-button">Voltar</button></a>
+        </div>
+    </div>
+</body>
+</html>

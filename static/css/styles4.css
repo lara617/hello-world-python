@@ -1,0 +1,94 @@
+/* styles.css */
+
+/* Estilo geral */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fc; /* Cor de fundo suave */
+    margin: 0;
+    padding: 0;
+}
+
+/* Container principal */
+.container {
+    max-width: 400px; /* Largura máxima do container */
+    margin: 100px auto; /* Centraliza verticalmente */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1, h2 {
+    color: #333;
+    text-align: center; /* Centraliza os títulos */
+}
+
+/* Estilo dos formulários */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff; /* Cor de foco */
+    outline: none; /* Remove o contorno padrão */
+}
+
+button {
+    padding: 12px;
+    background-color: #007bff; /* Azul */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Estilo das mensagens */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+    text-align: center; /* Centraliza o link */
+    display: block; /* Faz o link ocupar toda a largura */
+    margin-top: 10px; /* Espaço acima do link */
+}
+
+a:hover {
+    text-decoration: underline;
+}
