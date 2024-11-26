@@ -166,3 +166,40 @@ h3{
   .processador-arrow {
     display: none;
   }
+
+  .explanation {
+    margin-bottom: 20px;  /* Espaço abaixo da explicação */
+}
+
+div {
+    margin-bottom: 30px;  /* Espaço entre a barra e o gráfico */
+}
+
+.progresso-container {
+  width: 100%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.progresso-bar {
+  height: 100%;
+  background-color: green;
+  border-radius: 15px;
+}
+
+/* Remover o fundo preto da área de plotagem, mantendo as cores das barras */
+.plotly .plot-container {
+  background-color: transparent !important; /* Mantém a transparência para não afetar as barras */
+}
+
+/* Remover o fundo preto na área de plotagem do gráfico (SVG), mas não altera a cor das barras */
+.plotly svg {
+  background-color: transparent !important; /* Manter a área do gráfico transparente */
+}
+
+/* Caso o gráfico tenha camadas internas (como o gráfico de barras), não alterar a cor das barras */
+.plotly .main-svg {
+  background-color: transparent !important; /* Remover fundo preto sem afetar as barras */
+}

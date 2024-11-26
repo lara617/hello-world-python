@@ -6,6 +6,20 @@
     <title>Unidade de Memória</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles5.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
+    <style>
+        .barra-container {
+            width: 100%;
+            height: 30px;
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .barra-preenchida {
+            height: 100%;
+            border-radius: 15px;
+        }
+    </style>
    
 </head>
 <body>
@@ -75,34 +89,21 @@
                     </table>
                 </div>
 
-                <h2>Capacidade de Memória (Progresso)</h2>
-                <div class="progress-bar">
-                    <div class="progress-bar-fill" id="progressBarFill" style="width: 0%">
-                        0% Utilizado
-                    </div>
-                </div>
-
                 <div class="explanation">
                     Esta barra de progresso mostra a utilização de memória simulada.
                 </div>
-
+                
+                <!-- Barra de Progresso -->
+                <div>
+                    {{ barra_html | safe }}  <!-- Exibe a barra de progresso aqui -->
+                </div>
+                
                 <h2>Gráfico: Tipos de Memória e Velocidade</h2>
-               
-          
-             
-                  <div>
-        
-       
-                    <!-- Gráfico de Memória -->
-                            {{ graph_html | safe }}
-                        
-                          
-                    
-                            
-                    
-                       
-                    </div>
-                 
+                
+                <!-- Gráfico de Memória -->
+                <div>
+                    {{ graph_html | safe }}  <!-- Exibe o gráfico de memória aqui -->
+                </div>
           </div>
                 <p>
                     O gráfico de barras apresentado ilustra a
