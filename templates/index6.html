@@ -76,6 +76,14 @@
                 </div>
 
 
+                <h2>Capacidade de Memória (Progresso)</h2>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progressBarFill" style="width: 0%">
+                        0% Utilizado
+                    </div>
+                </div>
+
+
                 <div class="explanation">
                     Esta barra de progresso mostra a utilização de memória simulada.
                 </div>
@@ -92,6 +100,26 @@
                 <div>
                     {{ graph_html | safe }}  <!-- Exibe o gráfico de memória aqui -->
                 </div>
+
+
+
+                <h2>Gráfico: Tipos de Memória e Velocidade</h2>
+               
+          
+             
+                  <div>
+        
+       
+                    <!-- Gráfico de Memória -->
+                            {{ graph_html | safe }}
+                        
+                          
+                    
+                            
+                    
+                       
+                    </div>
+                 
 
           </div>
                 <p>

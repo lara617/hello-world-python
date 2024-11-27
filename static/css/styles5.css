@@ -166,6 +166,7 @@ h3{
   .processador-arrow {
     display: none;
 
+
   }
 
   .explanation {
@@ -265,3 +266,5 @@ tbody tr:last-child td {
 .plotly .main-svg {
   background-color: transparent !important; /* Remover fundo preto sem afetar as barras */
 }
+
+  }
