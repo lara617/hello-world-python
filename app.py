@@ -3,62 +3,24 @@ from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
 from graficos import create_bar_chart, create_memory_chart  # Corrigido para importar ambas as funções
-
+from server import app as server_app
 # Carregar as variáveis do .env
 load_dotenv()
+
+
+# Testa se as variáveis estão carregadas
+print("AUTH0_CLIENT_ID:", os.getenv("AUTH0_CLIENT_ID"))
+print("AUTH0_CLIENT_SECRET:", os.getenv("AUTH0_CLIENT_SECRET"))
+print("AUTH0_DOMAIN:", os.getenv("AUTH0_DOMAIN"))
+print("APP_SECRET_KEY:", os.getenv("APP_SECRET_KEY"))
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Rota principal
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
-
-# Rota de login
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        
-        if not email or not password:
-            flash('Por favor, preencha todos os campos.')
-            return render_template('login.html')
-        
-        # Aqui você pode adicionar lógica de autenticação sem Firebase
-        flash('Email ou senha incorretos.')
-    
-    return render_template('login.html')
-
-# Rota de cadastro
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        name = request.form['name']
-        
-        # Aqui você pode adicionar lógica de cadastro sem Firebase
-        flash('Cadastro realizado com sucesso! Faça login.')
-        return redirect(url_for('login'))
-
-    return render_template('signup.html')
-
-# Rota do painel de controle
-@app.route('/dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
-    
-    # Aqui você pode adicionar lógica para o painel de controle sem Firebase
-    return redirect(url_for('login'))
-
-# Rota de logout
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('home'))
 
 # Rota do gráfico 1 (Desempenho de Processadores)
 @app.route('/index7')
@@ -104,6 +66,18 @@ def index8():
 @app.route('/proccomp')
 def proccomp():
     return render_template('proccomp.html')
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+@app.route('/login')
+def login():
+    return redirect("http://127.0.0.1:3000/login")    # Certifique-se de que o `server.py` está rodando
+
+@app.route('/logout')
+def logout():
+    return redirect("http://127.0.0.1:3000/logout")
 
 # Endpoint para criação de usuários (POST)
 @app.route('/usuarios', methods=['POST'])
