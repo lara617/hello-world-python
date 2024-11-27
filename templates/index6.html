@@ -75,6 +75,7 @@
                     </table>
                 </div>
 
+
                 <h2>Capacidade de Memória (Progresso)</h2>
                 <div class="progress-bar">
                     <div class="progress-bar-fill" id="progressBarFill" style="width: 0%">
@@ -82,9 +83,25 @@
                     </div>
                 </div>
 
+
                 <div class="explanation">
                     Esta barra de progresso mostra a utilização de memória simulada.
                 </div>
+                <div class="barra-container">
+                    <div class="barra-preenchida barra-{{ percentual | default(0) }}"></div> <!-- A largura é controlada pela classe -->
+                </div>
+                <div id="percentualDisplay">{{ percentual }}%</div>
+              
+
+    
+                <h2>Gráfico: Tipos de Memória e Velocidade</h2>
+                
+                <!-- Gráfico de Memória -->
+                <div>
+                    {{ graph_html | safe }}  <!-- Exibe o gráfico de memória aqui -->
+                </div>
+
+
 
                 <h2>Gráfico: Tipos de Memória e Velocidade</h2>
                
@@ -103,6 +120,7 @@
                        
                     </div>
                  
+
           </div>
                 <p>
                     O gráfico de barras apresentado ilustra a
