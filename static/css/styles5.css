@@ -219,6 +219,37 @@ div {
 .barra-100 { width: 100%; }
 
 
+/* Estilo para a tabela */
+table {
+  width: 100%; /* Largura total da tabela */
+  border-collapse: collapse; /* Remove espaços entre as células */
+  margin-top: 20px; /* Espaço acima da tabela */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 10px; /* Bordas arredondadas */
+  overflow: hidden; /* Para bordas arredondadas */
+}
+
+th, td {
+  padding: 12px; /* Espaçamento interno */
+  text-align: left; /* Alinhamento à esquerda */
+  border-bottom: 1px solid #ddd; /* Linha de separação entre as linhas */
+}
+
+th {
+  background-color: #4CAF50; /* Cor de fundo do cabeçalho */
+  color: white; /* Cor do texto do cabeçalho */
+  font-weight: bold; /* Negrito */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+tbody tr:last-child td {
+  border-bottom: none; /* Remove a linha de separação da última linha */
+}
+
+
 /* Remover o fundo preto da área de plotagem, mantendo as cores das barras */
 .plotly .plot-container {
   background-color: transparent !important; /* Mantém a transparência para não afetar as barras */
