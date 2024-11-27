@@ -165,4 +165,103 @@ h3{
   /* Remover as setas */
   .processador-arrow {
     display: none;
+
   }
+
+  .explanation {
+    margin-bottom: 20px;  /* Espaço abaixo da explicação */
+}
+
+div {
+    margin-bottom: 30px;  /* Espaço entre a barra e o gráfico */
+}
+
+.percentual-display {
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Negrito */
+}
+
+.barra-container {
+    width: 100%;
+    height: 30px;
+    background-color: #e0e0e0; /* Cor de fundo da barra */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.barra-preenchida {
+    height: 100%;
+    background-color: green; /* Cor da barra preenchida */
+    border-radius: 15px;
+    transition: width 0.5s ease-in-out; /* Transição suave */
+}
+
+/* Definindo classes para diferentes percentuais */
+.barra-0 { width: 0%; }
+.barra-5 { width: 5%; }
+.barra-10 { width: 10%; }
+.barra-15 { width: 15%; }
+.barra-20 { width: 20%; }
+.barra-25 { width: 25%; }
+.barra-30 { width: 30%; }
+.barra-35 { width: 35%; }
+.barra-40 { width: 40%; }
+.barra-45 { width: 45%; }
+.barra-50 { width: 50%; }
+.barra-55 { width: 55%; }
+.barra-60 { width: 60%; }
+.barra-65 { width: 65%; }
+.barra-70 { width: 70%; }
+.barra-75 { width: 75%; }
+.barra-80 { width: 80%; }
+.barra-85 { width: 85%; }
+.barra-90 { width: 90%; }
+.barra-95 { width: 95%; }
+.barra-100 { width: 100%; }
+
+
+/* Estilo para a tabela */
+table {
+  width: 100%; /* Largura total da tabela */
+  border-collapse: collapse; /* Remove espaços entre as células */
+  margin-top: 20px; /* Espaço acima da tabela */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border-radius: 10px; /* Bordas arredondadas */
+  overflow: hidden; /* Para bordas arredondadas */
+}
+
+th, td {
+  padding: 12px; /* Espaçamento interno */
+  text-align: left; /* Alinhamento à esquerda */
+  border-bottom: 1px solid #ddd; /* Linha de separação entre as linhas */
+}
+
+th {
+  background-color: #4CAF50; /* Cor de fundo do cabeçalho */
+  color: white; /* Cor do texto do cabeçalho */
+  font-weight: bold; /* Negrito */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+tbody tr:last-child td {
+  border-bottom: none; /* Remove a linha de separação da última linha */
+}
+
+
+/* Remover o fundo preto da área de plotagem, mantendo as cores das barras */
+.plotly .plot-container {
+  background-color: transparent !important; /* Mantém a transparência para não afetar as barras */
+}
+
+/* Remover o fundo preto na área de plotagem do gráfico (SVG), mas não altera a cor das barras */
+.plotly svg {
+  background-color: transparent !important; /* Manter a área do gráfico transparente */
+}
+
+/* Caso o gráfico tenha camadas internas (como o gráfico de barras), não alterar a cor das barras */
+.plotly .main-svg {
+  background-color: transparent !important; /* Remover fundo preto sem afetar as barras */
+}

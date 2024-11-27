@@ -22,17 +22,41 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 def index():
     return render_template('index.html')
 
+
+from flask import Flask, render_template,   session
+from werkzeug.security import check_password_hash, generate_password_hash
+from graficos import create_bar_chart, create_memory_chart 
+from barr import gerar_barra_progresso
+
+
+# Carregar as variáveis do .env
+load_dotenv()
+
+app = Flask(__name__)
+percentual_memoria = 5
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 # Rota do gráfico 1 (Desempenho de Processadores)
 @app.route('/index7')
 def grafico1():
     graph_html = create_bar_chart()  # Gera o gráfico de barras do desempenho do processador
     return render_template('index7.html', graph_html=graph_html)
 
-# Rota do gráfico 2 (Velocidade de Memória)
 @app.route('/index6')
 def grafico2():
-    graph_html = create_memory_chart()  # Gera o gráfico de velocidade de memória
-    return render_template('index6.html', graph_html=graph_html)
+    global percentual_memoria
+
+    if percentual_memoria < 100:
+        percentual_memoria += 5  # Aumenta 5% a cada recarregamento da página
+
+    # Gerar o gráfico de memória
+    graph_html = create_memory_chart()  # Função que gera o gráfico de velocidade de memória
+    
+    # Retornar a página com o gráfico de memória e a barra de progresso
+    return render_template('index6.html', graph_html=graph_html, percentual=percentual_memoria)
+
 
 # Outras rotas para páginas adicionais
 @app.route('/index2')
@@ -68,7 +92,7 @@ def proccomp():
     return render_template('proccomp.html')
 
 @app.route('/home')
-def home():
+def home_page():
     return render_template('home.html')
 
 @app.route('/login')
@@ -79,31 +103,6 @@ def login():
 def logout():
     return redirect("http://127.0.0.1:3000/logout")
 
-# Endpoint para criação de usuários (POST)
-@app.route('/usuarios', methods=['POST'])
-def criar_usuario():
-    dados = request.json
-    if not dados or 'email' not in dados or 'password' not in dados or 'nome' not in dados:
-        return jsonify({"erro": "Dados incompletos"}), 400
-    
-    # Aqui você pode adicionar lógica para criar usuários sem Firebase
-    new_user = {
-        'Email': dados['email'],
-        'pass': generate_password_hash(dados['password']),
-        'Nome': dados['nome'],
-        'role': 'user',
-        'CreatedAt': 'dummy_timestamp',  # Substitua por lógica de timestamp se necessário
-        'lastLogin': 'dummy_timestamp',   # Substitua por lógica de timestamp se necessário
-        'Foto perfil': dados.get('foto_perfil', '')
-    }
-    
-    return jsonify({"mensagem": "Usuário criado com sucesso", "id": "dummy_id"}), 201
-
-# Endpoint para obter um usuário por ID (GET)
-@app.route('/usuarios/<id>', methods=['GET'])
-def obter_usuario(id):
-    # Aqui você pode adicionar lógica para obter usuários sem Firebase
-    return jsonify({"erro": "Usuário não encontrado"}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
