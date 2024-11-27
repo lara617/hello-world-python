@@ -2,14 +2,15 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template,   session
 from werkzeug.security import check_password_hash, generate_password_hash
-from graficos import create_bar_chart, create_memory_chart  # Corrigido para importar ambas as funções
+from graficos import create_bar_chart, create_memory_chart 
 from barr import gerar_barra_progresso
+
 
 # Carregar as variáveis do .env
 load_dotenv()
 
 app = Flask(__name__)
-percentual_memoria = 0
+percentual_memoria = 5
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -21,24 +22,18 @@ def home():
 def grafico1():
     graph_html = create_bar_chart()  # Gera o gráfico de barras do desempenho do processador
     return render_template('index7.html', graph_html=graph_html)
-
 @app.route('/index6')
 def grafico2():
     global percentual_memoria
 
-    # Simulando o aumento gradual da memória utilizada (aumenta 1% por vez)
     if percentual_memoria < 100:
-        percentual_memoria += 1  # Aumenta 1% a cada recarregamento da página
+        percentual_memoria += 5  # Aumenta 5% a cada recarregamento da página
 
     # Gerar o gráfico de memória
     graph_html = create_memory_chart()  # Função que gera o gráfico de velocidade de memória
     
-    # Gerar a barra de progresso com o percentual de memória
-    barra_html = gerar_barra_progresso(percentual_memoria)
-
     # Retornar a página com o gráfico de memória e a barra de progresso
-    return render_template('index6.html', graph_html=graph_html, barra_html=barra_html)
-
+    return render_template('index6.html', graph_html=graph_html, percentual=percentual_memoria)
 
 # Outras rotas para páginas adicionais
 @app.route('/index2')
