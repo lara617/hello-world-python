@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.security import check_password_hash, generate_password_hash
-from graficos import create_bar_chart, create_memory_chart  # Corrigido para importar ambas as funções
+from graficos import create_bar_chart, create_memory_chart
 from server import app as server_app
 # Carregar as variáveis do .env
 load_dotenv()
@@ -28,68 +28,6 @@ def index():
     return render_template('index.html')
 
 
-from flask import Flask, render_template,   session
-from werkzeug.security import check_password_hash, generate_password_hash
-from graficos import create_bar_chart, create_memory_chart 
-from barr import gerar_barra_progresso
-
-
-# Carregar as variáveis do .env
-load_dotenv()
-
-app = Flask(__name__)
-percentual_memoria = 5
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-def home():
-    return render_template('index.html')
-
-# Rota de login
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        password = request.form.get('password')
-        
-        if not email or not password:
-            flash('Por favor, preencha todos os campos.')
-            return render_template('login.html')
-        
-        # Aqui você pode adicionar lógica de autenticação sem Firebase
-        flash('Email ou senha incorretos.')
-    
-    return render_template('login.html')
-
-# Rota de cadastro
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        name = request.form['name']
-        
-        # Aqui você pode adicionar lógica de cadastro sem Firebase
-        flash('Cadastro realizado com sucesso! Faça login.')
-        return redirect(url_for('login'))
-
-    return render_template('signup.html')
-
-# Rota do painel de controle
-@app.route('/dashboard')
-def dashboard():
-    if 'user_id' not in session:
-        return redirect(url_for('login'))
-    
-    # Aqui você pode adicionar lógica para o painel de controle sem Firebase
-    return redirect(url_for('login'))
-
-# Rota de logout
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('home'))
 
 # Rota do gráfico 1 (Desempenho de Processadores)
 @app.route('/index7')
@@ -111,12 +49,6 @@ def grafico2():
     # Retornar a página com o gráfico de memória e a barra de progresso
     return render_template('index6.html', graph_html=graph_html, percentual=percentual_memoria)
 
-
-# Rota do gráfico 2 (Velocidade de Memória)
-@app.route('/index6')
-def grafico2():
-    graph_html = create_memory_chart()  # Gera o gráfico de velocidade de memória
-    return render_template('index6.html', graph_html=graph_html)
 
 # Outras rotas para páginas adicionais
 @app.route('/index2')
@@ -157,11 +89,19 @@ def home_page():
 
 @app.route('/login')
 def login():
-    return redirect("http://127.0.0.1:3000/login")    # Certifique-se de que o `server.py` está rodando
+    return redirect(
+        "https://dev-tw7648ler51b10s7.eu.auth0.com/authorize?response_type=code&client_id=g2xJF8I0C3CWAm9DicdayFUpHjXAQ0oI&redirect_uri=https://programacao-avancada-com-python-10794.vercel.app/login/callback"
+    )
+
 
 @app.route('/logout')
 def logout():
-    return redirect("http://127.0.0.1:3000/logout")
+    # Redireciona o usuário para o logout no Auth0
+    return redirect(
+        'https://dev-tw7648ler51b10s7.eu.auth0.com/v2/logout?returnTo=https://programacao-avancada-com-python-10794.vercel.app/login'
+    )
+
+
 
 # Endpoint para criação de usuários (POST)
 @app.route('/usuarios', methods=['POST'])
