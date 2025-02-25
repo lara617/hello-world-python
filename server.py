@@ -43,7 +43,12 @@ def home():
 def callback():
     token = oauth.auth0.authorize_access_token()
     session["user"] = token
-    return redirect("/")
+    return redirect(url_for("aplicacao"))
+
+
+@app.route("/aplicacao")
+def aplicacao():
+    return render_template("aplicação.html")
 
 
 @app.route("/login")

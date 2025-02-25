@@ -87,6 +87,10 @@ def proccomp():
 def home_page():
     return render_template('home.html')
 
+@app.route('/aplicação')
+def aplicação():
+    return render_template('aplicação.html')
+
 @app.route('/login')
 def login():
     return redirect(
